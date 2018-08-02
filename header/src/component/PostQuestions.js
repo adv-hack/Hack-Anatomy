@@ -88,6 +88,7 @@ class PostQuestions extends Component {
                 >
                   {innerArray.questionDesc}
                 </div>
+                <div className="col-md-12">
                 <CheckboxQuestionList
                   question={innerArray.questionDesc}
                   value={innerArray.options}
@@ -95,7 +96,7 @@ class PostQuestions extends Component {
                   selectedAnswer={innerArray.answer}
                   totalMarks={innerArray.totMarks}
                 />
-
+                </div>
                 <div>
                   <label>
                         Correct Answer: <span style={{color: "green"}}>{innerArray.rightAns.join(",")}</span>
@@ -122,6 +123,7 @@ class PostQuestions extends Component {
                   >
                     {innerArray.questionDesc}
                   </div>
+                  <div className="col-md-12">
                   <RadioButtonQuestionList
                     question={innerArray.questionDesc}
                     value={innerArray.options}
@@ -129,7 +131,7 @@ class PostQuestions extends Component {
                     selectedAnswer={innerArray.answer}
                     totalMarks={innerArray.totMarks}
                   />
-
+                  </div>
                   <div>
                   <label>
                       Correct Answer: <span style={{color: "green"}}>{innerArray.rightAns.join(",")}</span>
@@ -156,13 +158,14 @@ class PostQuestions extends Component {
                 >
                   {innerArray.questionDesc}
                 </div>
+                <div className="col-md-12">
                 <TextAreaQuestionList
                   question={innerArray.questionDesc}
                   value={innerArray.options}
                   questionid={innerArray.question }
                   selectedAnswer={innerArray.answer}
                 />
-
+                </div>
                 <div>
                   <label>
                       Correct Answer: <span style={{color: "green"}}>{innerArray.rightAns.join(",")}</span>
