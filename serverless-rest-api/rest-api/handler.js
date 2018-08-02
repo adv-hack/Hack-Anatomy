@@ -189,9 +189,18 @@ module.exports.Result = (event, context, callback) => {
                 }
               }
             }else{
-              var answers = anss[0] + '#' + ans[i].answer[0];
-              var apiURL="https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/questions/2/Maths";
-              fetch(apiURL)
+              var answers = {};
+              answer.modelAns = "I am your mother";
+              answer.actAns = "I am your daughter";
+              var apiURL="http://13.250.105.2:5001/sen_sim/sen";
+              fetch(apiURL,{
+                  method: "POST",
+                  body: JSON.stringify(answer),
+                  headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                  }
+                })
                 .then(res => res.json())
                 .then(() => {
                   let similarity = 1
