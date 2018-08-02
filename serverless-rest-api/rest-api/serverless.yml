@@ -24,62 +24,13 @@ functions: # add 4 functions for CRUD
           path: questions # path will be domain.name.com/dev/notes
           method: post
           cors: true          
-  createAns:
-    handler: handler.createAns # point to exported create function in handler.js
-    events:
-      - http:
-          path: answers # path will be domain.name.com/dev/notes
-          method: post
-          cors: true 
-  # createOption:
-  #   handler: handler.createOption # point to exported create function in handler.js
-  #   events:
-  #     - http:
-  #         path: options # path will be domain.name.com/dev/notes
-  #         method: post
-  #         cors: true 
-  # getOne:
-  #   handler: handler.getOne
-  #   events:
-  #     - http:
-  #         path: notes/{id} # path will be domain.name.com/dev/notes/1
-  #         method: get
-  #         cors: true
-  # getAll:
-  #   handler: handler.getAll # path will be domain.name.com/dev/notes
-  #   events:
-  #    - http:
-  #        path: notes
-  #        method: get
-  #        cors: true
   getAllQue:
     handler: handler.getAllQue # path will be domain.name.com/dev/notes
     events:
      - http:
-         path: questions/{total}/{subject}
+         path: questions/{total}/{subject}/{difficulty}/{learnerID}
          method: get
          cors: true
-  getAns:
-    handler: handler.getAns
-    events:
-      - http:
-          path: ans/{id} # path will be domain.name.com/dev/notes/1
-          method: get
-          cors: true         
-  Result:
-    handler: handler.Result
-    events:
-      - http:
-          path: result # path will be domain.name.com/dev/notes/1
-          method: post
-          cors: true 
-  # update:
-  #   handler: handler.update # path will be domain.name.com/dev/notes/1
-  #   events:
-  #    - http:
-  #        path: notes/{id}
-  #        method: put
-  #        cors: true
   truncateQuestion:
     handler: handler.truncateQuestion
     events:
@@ -87,6 +38,76 @@ functions: # add 4 functions for CRUD
          path: questions # path will be domain.name.com/dev/notes/1
          method: delete
          cors: true
+  getQuestions:
+    handler: handler.getQuestions
+    events:
+     - http:
+         path: questions # path will be domain.name.com/dev/notes/1
+         method: get
+         cors: true
+  # createAns: getQuestions
+  #   handler: handler.createAns # point to exported create function in handler.js
+  #   events:
+  #     - http:
+  #         path: answers # path will be domain.name.com/dev/notes
+  #         method: post
+  #         cors: true 
+  # createTest:
+  #   handler: handler.createTest # point to exported create function in handler.js
+  #   events:
+  #     - http:
+  #         path: test # path will be domain.name.com/dev/notes
+  #         method: post
+  #         cors: true 
+  createStudent:
+    handler: handler.createStudent # point to exported create function in handler.js
+    events:
+      - http:
+          path: student # path will be domain.name.com/dev/notes
+          method: post
+          cors: true 
+  getStudent:
+    handler: handler.getStudent # point to exported create function in handler.js
+    events:
+      - http:
+          path: student/{learnerid} # path will be domain.name.com/dev/notes
+          method: get
+          cors: true 
+  deleteStudent:
+    handler: handler.deleteStudent
+    events:
+     - http:
+         path: student/del/{id} # path will be domain.name.com/dev/notes/1
+         method: delete
+         cors: true
 
+  # getAns:
+  #   handler: handler.getAns
+  #   events:
+  #     - http:
+  #         path: ans/{id} # path will be domain.name.com/dev/notes/1
+  #         method: get
+  #         cors: true        
+  # getAllAns:
+  #   handler: handler.getAllAns
+  #   events:
+  #     - http:
+  #         path: ans # path will be domain.name.com/dev/notes/1
+  #         method: get
+  #         cors: true         
+  Result:
+    handler: handler.Result
+    events:
+      - http:
+          path: result/{learnerID}/{difficulty} # path will be domain.name.com/dev/notes/1
+          method: post
+          cors: true 
+  truncateAnswer:
+    handler: handler.truncateAnswer
+    events:
+     - http:
+         path: answers # path will be domain.name.com/dev/notes/1
+         method: delete
+         cors: true
 plugins:
   - serverless-offline
