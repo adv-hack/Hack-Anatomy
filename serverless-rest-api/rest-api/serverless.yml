@@ -1,0 +1,92 @@
+
+service: rest-api2
+
+provider:
+  name: aws
+  runtime: nodejs6.10 # set node.js runtime
+  memorySize: 128 # set the maximum memory of the Lambdas in Megabytes
+  timeout: 10 # the timeout is 10 seconds (default is 6 seconds)
+  stage: dev # setting the env stage to dev, this will be visible in the routes
+  region: ap-southeast-1
+
+functions: # add 4 functions for CRUD
+  # create:
+  #   handler: handler.create # point to exported create function in handler.js
+  #   events:
+  #     - http:
+  #         path: notes # path will be domain.name.com/dev/notes
+  #         method: post
+  #         cors: true
+  createQue:
+    handler: handler.createQue # point to exported create function in handler.js
+    events:
+      - http:
+          path: questions # path will be domain.name.com/dev/notes
+          method: post
+          cors: true          
+  createAns:
+    handler: handler.createAns # point to exported create function in handler.js
+    events:
+      - http:
+          path: answers # path will be domain.name.com/dev/notes
+          method: post
+          cors: true 
+  # createOption:
+  #   handler: handler.createOption # point to exported create function in handler.js
+  #   events:
+  #     - http:
+  #         path: options # path will be domain.name.com/dev/notes
+  #         method: post
+  #         cors: true 
+  # getOne:
+  #   handler: handler.getOne
+  #   events:
+  #     - http:
+  #         path: notes/{id} # path will be domain.name.com/dev/notes/1
+  #         method: get
+  #         cors: true
+  # getAll:
+  #   handler: handler.getAll # path will be domain.name.com/dev/notes
+  #   events:
+  #    - http:
+  #        path: notes
+  #        method: get
+  #        cors: true
+  getAllQue:
+    handler: handler.getAllQue # path will be domain.name.com/dev/notes
+    events:
+     - http:
+         path: questions/{total}/{subject}
+         method: get
+         cors: true
+  getAns:
+    handler: handler.getAns
+    events:
+      - http:
+          path: ans/{id} # path will be domain.name.com/dev/notes/1
+          method: get
+          cors: true         
+  Result:
+    handler: handler.Result
+    events:
+      - http:
+          path: result # path will be domain.name.com/dev/notes/1
+          method: post
+          cors: true 
+  # update:
+  #   handler: handler.update # path will be domain.name.com/dev/notes/1
+  #   events:
+  #    - http:
+  #        path: notes/{id}
+  #        method: put
+  #        cors: true
+  truncateQuestion:
+    handler: handler.truncateQuestion
+    events:
+     - http:
+         path: questions # path will be domain.name.com/dev/notes/1
+         method: delete
+         cors: true
+
+plugins:
+  - serverless-offline
