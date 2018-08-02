@@ -13,6 +13,7 @@ class PostQuestions extends Component {
         isLoaded: false,
         items: []
       };
+      this.data = props.data;
   }
 
   getFinalResult = (val,arr) =>{
@@ -33,8 +34,7 @@ class PostQuestions extends Component {
 
   componentWillMount() {
     var url =
-      "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/result/123123/easy";
-
+      "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/result/"+  this.data.learnerID +"/" + this.data.difficulty;
     var jsonData = [];
     this.quearr.map(statevalue => {
       jsonData.push({

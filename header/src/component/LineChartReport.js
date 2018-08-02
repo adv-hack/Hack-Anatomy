@@ -8,7 +8,7 @@ class LineChartReport extends Component {
         const data = [
             {									
                 color: "#e9510e", 
-                points: [{x: 1, y: 2}, {x: 3, y: 5}, {x: 7, y: -3}] 
+                points: [{x: 0, y: 2}, {x: 3, y: 5}, {x: 7, y: -3}] 
             }
         ];
         return (

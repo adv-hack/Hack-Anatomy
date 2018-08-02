@@ -49,7 +49,11 @@ class DisplayQuestions extends Component {
   };
 
   onTextAreaUpdate = (val, questionid) => {
-    
+    this.state.quearr.map((statevalue, idx) => {
+      if (statevalue.questionid === questionid) {
+        this.state.quearr.splice(idx, 1);
+      }
+    });
     this.state.quearr.push({ answer: val, questionid: questionid });
   };
 
@@ -128,7 +132,7 @@ class DisplayQuestions extends Component {
       return (
       <form onSubmit={this.handleSubmit}>
       <h3 style={{color:"blue"}}>Final Result: {this.state.finalResult}</h3>
-      <PostQuestions quearr={this.state.quearr} getFinalResult={this.getFinalResult}/>
+      <PostQuestions quearr={this.state.quearr} getFinalResult={this.getFinalResult} data={this.data}/>
       <div className="col-md-4">
       <Button
         color="advanced"
@@ -146,6 +150,7 @@ class DisplayQuestions extends Component {
         <APIService
           onCheckBoxUpdate={this.onCheckBoxUpdate}
           onRadioUpdate={this.onRadioUpdate}
+          onTextAreaUpdate={this.onTextAreaUpdate}
           getQuestionsLength = {this.getQuestionsLength}
           data={this.data}
         />
