@@ -190,18 +190,17 @@ module.exports.Result = (event, context, callback) => {
               }
             }else{
               var answers = {};
-              answer.modelAns = "I am your mother";
-              answer.actAns = "I am your daughter";
+              answers.modelAns = "I am your mother";
+              answers.actAns = "I am your daughter";
               var apiURL="http://13.250.105.2:5001/sen_sim/sen";
               fetch(apiURL,{
                   method: "POST",
-                  body: JSON.stringify(answer),
+                  body: JSON.stringify(answers),
                   headers: {
                   'Accept': 'application/json',
                   'Content-Type': 'application/json'
                   }
                 })
-                .then(res => res.json())
                 .then(() => {
                   let similarity = 1
                   totMarks += similarity
