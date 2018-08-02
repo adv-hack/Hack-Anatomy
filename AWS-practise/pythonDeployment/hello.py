@@ -45,7 +45,7 @@ def sen_sim(sen):
 
     ans = lib.callMe()
     #call sentense similarity function from main model
-    return actAns + '   ' + modelAns + '   ' + str(model_sentiment) + '  ' + str(act_sentiment) + '   ' + str(avg_bench_mark) + '  ' + str(vector_dist) + '   ' + str(sementi_similarity)
+    return str(0.234)#actAns + '   ' + modelAns + '   ' + str(model_sentiment) + '  ' + str(act_sentiment) + '   ' + str(avg_bench_mark) + '  ' + str(vector_dist) + '   ' + str(sementi_similarity)
 
 def implModel(content):
 	regr=joblib.load('regmodel.pkl')
