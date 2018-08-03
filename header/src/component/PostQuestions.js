@@ -25,7 +25,7 @@ class PostQuestions extends Component {
     val.map(value=>{
         if(value.totMarks > 0)
         {
-          count+=1;
+          count+=value.totMarks;
         }
     })
 
@@ -164,6 +164,7 @@ class PostQuestions extends Component {
                   value={innerArray.options}
                   questionid={innerArray.question }
                   selectedAnswer={innerArray.answer}
+                  totalMarks={innerArray.totMarks}
                 />
                 </div>
                 <div>
