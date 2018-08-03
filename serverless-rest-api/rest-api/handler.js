@@ -202,13 +202,13 @@ var obj = {};
 var finalAns={};
 var anss;
 
-var TextArea = function(ans,i,event){
+var TextArea = function(ans,i,event,objj){
   return new Promise(function(resolve, reject){
     {
       
       var answers = {};
-      answers.modelAns = ans[i].answer;
-      answers.actAns = ans[i].rightAnswer;
+      answers.modelAns = objj.rightAns[0];
+      answers.actAns = objj.answer;
       var apiURL = "http://13.250.105.2:5001/sen_sim/sen";
       fetch2(apiURL, {
         method: "POST",
@@ -333,7 +333,7 @@ var someFunction = function(ans,event,i) {
       obj[j].options = ans[i].options;
       //console.log(obj[j]);
       if(ans[i].questiontype == "text"){
-        promises.push(TextArea(ans,i,event));
+        promises.push(TextArea(ans,i,event,obj[j]));
       }else{
         promises.push(checkboxRadio(ans,i,j));
       }
