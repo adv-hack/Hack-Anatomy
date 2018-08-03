@@ -39,7 +39,7 @@ def sen_sim(sen):
     modelAns = data['modelAns']
     actAns = data['actAns']
     modelword2vec = lib.word2vec	
-
+    ansss = "0"	
     model_sentiment = lib.findSentiment(modelAns)
     act_sentiment = lib.findSentiment(actAns)
     if (model_sentiment<=-0.25 and act_sentiment<=-0.25) or (model_sentiment>-0.25 and act_sentiment>-0.25 and model_sentiment<=0.25 and act_sentiment<=0.25) or (model_sentiment>0.25 and act_sentiment>0.25 and model_sentiment<=1 and act_sentiment<=1):
@@ -54,8 +54,7 @@ def sen_sim(sen):
         sim3=sim3*2
         avgofthreemodels=(sim1+sim2+sim3)/3
         answervalue=sentimentvalue*avgofthreemodels
-        return str(answervalue)
-    else:
-        return "0"
+        ansss = str(answervalue)
+    return ansss
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5001)
