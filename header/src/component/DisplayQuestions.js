@@ -115,17 +115,17 @@ class DisplayQuestions extends Component {
   render() {
     if (this.state.redirectToNewPage === true) {
       return (
-       
-        <div className="row">
-          <div className="col-md-12">
-            <div className="col-md-6">
-              <Report />
-            </div>
-            <div className="col-md-6">
-              <LineChartReport />
-            </div>
-          </div>
-        </div>
+        // <div className="row">
+        //   <div className="col-md-12">
+        //     <div className="col-md-6">
+        //       <Report />
+        //     </div>
+        //     <div className="col-md-6">
+        //       <LineChartReport />
+        //     </div>
+        //   </div>
+        // </div>
+        <Report />
       );
     }
     else if(this.state.isSubmit)

@@ -24,8 +24,6 @@ class Report extends Component {
       .then(res => res.json())
       .then(
         result => {
-          debugger;
-          
           learnerResponse1.push({
             subjectid: 1,
             EasyQuestions: result[0].easyNo,
@@ -38,7 +36,6 @@ class Report extends Component {
           })
 
           this.setState({
-            isLoaded: true,
             items: result,
             learnerResponse:learnerResponse1
           });
@@ -60,7 +57,6 @@ class Report extends Component {
               });
             },
             error => {
-             debugger;
             });
         },
         error => {
@@ -80,11 +76,17 @@ class Report extends Component {
       return <div><Loader /></div>;
     } else {
     return (
-      <div>
-        <div>
-          <h1>Prediction Chart</h1>
+      <div className="row">
+      <div className="col-md-12">
+      <div style={{textAlign:"center"}}>
+          <h1>Prediction</h1>
         </div>
-        <ReactSpeedometer
+      </div>
+      <div className="row">
+      <div className="col-md-12">
+      <div className="col-md-4"></div>
+      <div className="col-md-4">
+      <ReactSpeedometer
           value={this.state.finalResult}
           needleTransitionDuration={4000}
           minValue={0}
@@ -94,6 +96,10 @@ class Report extends Component {
           needleTransition="easeElastic"
           currentValueText="Current Value: ${value}"
         />
+      </div>
+      <div className="col-md-4"></div>
+      </div>
+      </div>
       </div>
     );
   }
