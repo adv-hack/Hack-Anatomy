@@ -215,7 +215,9 @@ var TextArea = function(ans,i,event){
         body: JSON.stringify(answers),
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
         }
       })
       .then(res => res.json())
