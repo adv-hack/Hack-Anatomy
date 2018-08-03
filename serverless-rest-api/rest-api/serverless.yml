@@ -45,7 +45,14 @@ functions: # add 4 functions for CRUD
          path: questions # path will be domain.name.com/dev/notes/1
          method: get
          cors: true
-  # createAns: getQuestions
+  getTemp:
+    handler: handler.getTemp
+    events:
+     - http:
+         path: temp/{learnerid} # path will be domain.name.com/dev/notes/1
+         method: get
+         cors: true
+  # createAns: getQuestions getTemp
   #   handler: handler.createAns # point to exported create function in handler.js
   #   events:
   #     - http:
