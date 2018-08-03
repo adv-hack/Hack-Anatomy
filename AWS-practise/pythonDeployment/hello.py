@@ -46,7 +46,7 @@ def sen_sim(sen):
         absvalue=abs(model_sentiment-act_sentiment)
         if absvalue==0:
             absvalue=1
-        sentimentvalue=absvalue/2
+        sentimentvalue=absvalue
         sim1=lib.run_avg_benchmark(modelAns,actAns,model=lib.word2vec)
         sim2=lib.word_vectors.wmdistance(modelAns,actAns)
         sim2=(8-sim2)/8
