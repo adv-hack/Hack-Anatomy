@@ -207,8 +207,8 @@ var TextArea = function(ans,i,event){
     {
       
       var answers = {};
-      answers.modelAns = "I am your mother";
-      answers.actAns = "I am your daughter";
+      answers.modelAns = ans[i].answer;
+      answers.actAns = ans[i].rightAnswer;
       var apiURL = "http://13.250.105.2:5001/sen_sim/sen";
       fetch2(apiURL, {
         method: "POST",
