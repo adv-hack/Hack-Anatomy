@@ -43,19 +43,19 @@ def sen_sim(sen):
     model_sentiment = lib.findSentiment(modelAns)
     act_sentiment = lib.findSentiment(actAns)
     if (model_sentiment<=-0.25 and act_sentiment<=-0.25) or (model_sentiment>-0.25 and act_sentiment>-0.25 and model_sentiment<=0.25 and act_sentiment<=0.25) or (model_sentiment>0.25 and act_sentiment>0.25 and model_sentiment<=1 and act_sentiment<=1):
-        absvalue=abs(model_sentiment-act_sentiment)
-        if absvalue==0:
-            absvalue=1
-        sentimentvalue=absvalue
-        ansss = str(sentimentvalue)
-        # sim1=lib.run_avg_benchmark(modelAns,actAns,model=lib.word2vec)
-        # sim2=lib.word_vectors.wmdistance(modelAns,actAns)
-        # sim2=(8-sim2)/8
-        # sim3=lib.semanticSimilarity(modelAns,actAns)
-        # sim3=sim3*2
-        # avgofthreemodels=(sim1+sim2+sim3)/3
+        # absvalue=abs(model_sentiment-act_sentiment)
+        # if absvalue==0:
+        #     absvalue=1
+        # sentimentvalue=absvalue
+        # ansss = str(sentimentvalue)
+        sim1=lib.run_avg_benchmark(modelAns,actAns,model=lib.word2vec)
+        sim2=lib.word_vectors.wmdistance(modelAns,actAns)
+        sim2=(8-sim2)/8
+        sim3=lib.semanticSimilarity(modelAns,actAns)
+        sim3=sim3*2
+        avgofthreemodels=(sim1+sim2+sim3)/3
         # answervalue=sentimentvalue*avgofthreemodels
-        # ansss = str(answervalue)
+        ansss = str(avgofthreemodels)
     return ansss
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5001)
