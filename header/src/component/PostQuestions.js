@@ -51,10 +51,6 @@ class PostQuestions extends Component {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': true
         },
-        xhrFields: {
-          withCredentials: true
-       },
-       crossDomain: true,
       }).then(res => res.json())
       .then(
         result => {
