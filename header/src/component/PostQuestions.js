@@ -47,8 +47,14 @@ class PostQuestions extends Component {
         body: JSON.stringify(jsonData),
         headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true
         },
+        xhrFields: {
+          withCredentials: true
+       },
+       crossDomain: true,
       }).then(res => res.json())
       .then(
         result => {
