@@ -64,7 +64,10 @@ def run_avg_benchmark(sentences1, sentences2, model=None, use_stoplist=False, do
         sim = cosine_similarity(embedding1, embedding2)[0][0]
         sims.append(sim)
     #print (sum(sims) / float(len(sims)))
-    return sum(sims) / float(len(sims))
+    if len(sims) > 0:
+        return sum(sims) / float(len(sims))
+    else:
+        return len(sims)
 
 
 #method 3
