@@ -68,7 +68,7 @@ def run_avg_benchmark(sentences1, sentences2, model=None, use_stoplist=False, do
     #     return sum(sims) / float(len(sims))
     # else
     #     return len(sims)
-    return len(sims)
+    return np.mean(sims)
 
 
 #method 3
