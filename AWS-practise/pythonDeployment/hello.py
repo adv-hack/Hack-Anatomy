@@ -53,7 +53,7 @@ def sen_sim(sen):
         if sim2 == float('Inf'):
             sim2 = 8
         sim2 = (8-sim2)/8
-        sim3 = 0 #lib.semanticSimilarity(modelAns, actAns)
+        sim3 = lib.semanticSimilarity(modelAns, actAns)
         sim3 = sim3*2
         avgofthreemodels = (sim1+sim2+sim3)/3
         answervalue = sentimentvalue*avgofthreemodels
