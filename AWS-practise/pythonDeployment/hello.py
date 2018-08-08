@@ -38,25 +38,25 @@ def sen_sim(sen):
     data = request.get_json(force=True)
     modelAns = data['modelAns']
     actAns = data['actAns']
-    modelword2vec = lib.word2vec	
-    ansss = "0"	
+    modelword2vec = lib.word2vec
+    ansss = "0"
     model_sentiment = lib.findSentiment(modelAns)
     act_sentiment = lib.findSentiment(actAns)
-    if (model_sentiment<=-0.25 and act_sentiment<=-0.25) or (model_sentiment>-0.25 and act_sentiment>-0.25 and model_sentiment<=0.25 and act_sentiment<=0.25) or (model_sentiment>0.25 and act_sentiment>0.25 and model_sentiment<=1 and act_sentiment<=1):
-        absvalue=abs(model_sentiment-act_sentiment)
-        if absvalue==0:
-            absvalue=1
-        sentimentvalue=absvalue
+    if (model_sentiment <= -0.25 and act_sentiment <= -0.25) or (model_sentiment > -0.25 and act_sentiment > -0.25 and model_sentiment <= 0.25 and act_sentiment <= 0.25) or (model_sentiment > 0.25 and act_sentiment > 0.25 and model_sentiment <= 1 and act_sentiment <= 1):
+        absvalue = abs(model_sentiment-act_sentiment)
+        if absvalue == 0:
+            absvalue = 1
+        sentimentvalue = absvalue
         ansss = str(sentimentvalue)
-        sim1=lib.run_avg_benchmark(modelAns,actAns,model=lib.word2vec)
-        sim2=lib.word_vectors.wmdistance(modelAns,actAns)
-	if sim2==float('Inf'):
-            sim2=8
-        sim2=(8-sim2)/8
-        sim3=lib.semanticSimilarity(modelAns,actAns)
-        sim3=sim3*2
-        avgofthreemodels=(sim1+sim2+sim3)/3
-        answervalue=sentimentvalue*avgofthreemodels
+        sim1 = lib.run_avg_benchmark(modelAns, actAns, model=lib.word2vec)
+        sim2 = lib.word_vectors.wmdistance(modelAns, actAns)
+        if sim2 == float('Inf'):
+            sim2 = 8
+        sim2 = (8-sim2)/8
+        sim3 = lib.semanticSimilarity(modelAns, actAns)
+        sim3 = sim3*2
+        avgofthreemodels = (sim1+sim2+sim3)/3
+        answervalue = sentimentvalue*avgofthreemodels
         ansss = str(answervalue)
     return ansss
 if __name__ == "__main__":
