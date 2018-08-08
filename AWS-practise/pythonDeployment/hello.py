@@ -49,11 +49,11 @@ def sen_sim(sen):
         sentimentvalue = absvalue
         ansss = str(sentimentvalue)
         sim1 = lib.run_avg_benchmark(modelAns, actAns, model=lib.word2vec)
-        sim2 = lib.word_vectors.wmdistance(modelAns, actAns)
+        sim2 = 0 #lib.word_vectors.wmdistance(modelAns, actAns)
         if sim2 == float('Inf'):
             sim2 = 8
         sim2 = (8-sim2)/8
-        sim3 = lib.semanticSimilarity(modelAns, actAns)
+        sim3 = 0 #lib.semanticSimilarity(modelAns, actAns)
         sim3 = sim3*2
         avgofthreemodels = (sim1+sim2+sim3)/3
         answervalue = sentimentvalue*avgofthreemodels
