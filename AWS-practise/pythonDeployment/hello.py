@@ -51,7 +51,7 @@ def sen_sim(sen):
         sim1 = lib.run_avg_benchmark(modelAns, actAns, model=lib.word2vec)
         sim2 = lib.word_vectors.wmdistance(modelAns, actAns)
         if sim2 == float('Inf'):
-            sim2 = 0
+            sim2 = 1000
         #sim3 = 0 #lib.semanticSimilarity(modelAns, actAns)
         #sim3 = sim3*2
         avgofthreemodels = (sim1 + (1 / sim2))/2
