@@ -1,0 +1,60 @@
+
+service: dynamodb-api # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  region: ap-southeast-1
+  tableThroughputs:
+    prod: 5
+    default: 1
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
+
+functions:
+  hello:
+    handler: handler.hello
+  createQue:
+    handler: handler.createQue # point to exported create function in handler.js
+    events:
+      - http:
+          path: questions # path will be domain.name.com/dev/notes
+          method: post
+          cors: true          
+
+
+Resources:
+  QuestionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: question-${self:custom.stage}
+      DeletionPolicy: Retain
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}
+
+environment:
+    tableName:
+      Ref: QuestionsTable
+
+iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:DescribeTable
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+    Resource:
+      - "Fn::GetAtt": [ QuestionsTable, Arn ]        
