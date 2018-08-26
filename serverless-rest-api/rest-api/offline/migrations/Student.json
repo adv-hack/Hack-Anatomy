@@ -1,0 +1,21 @@
+{
+    "Table": {
+        "TableName": "Student-rest-api2-dev",
+        "KeySchema": [
+            {
+                "AttributeName": "learnerID",
+                "KeyType": "HASH"
+            }
+        ],
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "learnerID",
+                "AttributeType": "S"
+            }
+        ],
+        "ProvisionedThroughput": {
+            "ReadCapacityUnits": 1,
+            "WriteCapacityUnits": 1
+        }
+    }
+}

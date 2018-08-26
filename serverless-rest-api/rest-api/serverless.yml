@@ -1,13 +1,41 @@
 
 service: rest-api2
 
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    migration:
+      dir: offline/migrations
+
 provider:
   name: aws
-  runtime: nodejs6.10 # set node.js runtime
+  runtime: nodejs8.10 # set node.js runtime
   memorySize: 128 # set the maximum memory of the Lambdas in Megabytes
   timeout: 10 # the timeout is 10 seconds (default is 6 seconds)
   stage: dev # setting the env stage to dev, this will be visible in the routes
   region: ap-southeast-1
+  environment:
+    QUESTIONS_TABLE: Question-${self:service}-${opt:stage, self:provider.stage}
+    STUDENTS_TABLE: Student-${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.QUESTIONS_TABLE}"
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.STUDENTS_TABLE}"
 
 functions: # add 4 functions for CRUD
   # create:
@@ -17,104 +45,169 @@ functions: # add 4 functions for CRUD
   #         path: notes # path will be domain.name.com/dev/notes
   #         method: post
   #         cors: true
-  createQue:
-    handler: handler.createQue # point to exported create function in handler.js
+
+  # required
+  # createQue:
+  #   handler: handler.createQue # point to exported create function in handler.js
+  #   events:
+  #     - http:
+  #         path: questions # path will be domain.name.com/dev/notes
+  #         method: post
+  #         cors: true          
+  createDynamoQue:
+    handler: handler.createDynamoQue # point to exported create function in handler.js
     events:
       - http:
-          path: questions # path will be domain.name.com/dev/notes
+          path: dynamo/questions # path will be domain.name.com/dev/notes
           method: post
           cors: true          
-  getAllQue:
-    handler: handler.getAllQue # path will be domain.name.com/dev/notes
+  # getAllQue:
+  #   handler: handler.getAllQue # path will be domain.name.com/dev/notes
+  #   events:
+  #    - http:
+  #        path: questions/{total}/{subject}/{difficulty}/{learnerID}
+  #        method: get
+  #        cors: true
+  getAllQueD:
+    handler: handler.getAllQueD # path will be domain.name.com/dev/notes
     events:
      - http:
-         path: questions/{total}/{subject}/{difficulty}/{learnerID}
+         path: dynamo/questions/{total}/{subject}/{difficulty}/{learnerID}
          method: get
          cors: true
-  truncateQuestion:
-    handler: handler.truncateQuestion
-    events:
-     - http:
-         path: questions # path will be domain.name.com/dev/notes/1
-         method: delete
-         cors: true
-  getQuestions:
-    handler: handler.getQuestions
-    events:
-     - http:
-         path: questions # path will be domain.name.com/dev/notes/1
-         method: get
-         cors: true
-  getTemp:
-    handler: handler.getTemp
-    events:
-     - http:
-         path: temp/{learnerid} # path will be domain.name.com/dev/notes/1
-         method: get
-         cors: true
-  # createAns: getQuestions getTemp
-  #   handler: handler.createAns # point to exported create function in handler.js
+  # truncateQuestion:
+  #   handler: handler.truncateQuestion
+  #   events:
+  #    - http:
+  #        path: questions # path will be domain.name.com/dev/notes/1
+  #        method: delete
+  #        cors: true
+  # getQuestions:
+  #   handler: handler.getQuestions
+  #   events:
+  #    - http:
+  #        path: questions # path will be domain.name.com/dev/notes/1
+  #        method: get
+  #        cors: true
+  # getTemp:
+  #   handler: handler.getTemp
+  #   events:
+  #    - http:
+  #        path: temp/{learnerid} # path will be domain.name.com/dev/notes/1
+  #        method: get
+  #        cors: true
+  # # createAns: getQuestions getTemp
+  # #   handler: handler.createAns # point to exported create function in handler.js
+  # #   events:
+  # #     - http:
+  # #         path: answers # path will be domain.name.com/dev/notes
+  # #         method: post
+  # #         cors: true 
+  # # createTest:
+  # #   handler: handler.createTest # point to exported create function in handler.js
+  # #   events:
+  # #     - http:
+  # #         path: test # path will be domain.name.com/dev/notes
+  # #         method: post
+  # #         cors: true 
+  # createStudent:
+  #   handler: handler.createStudent # point to exported create function in handler.js
   #   events:
   #     - http:
-  #         path: answers # path will be domain.name.com/dev/notes
+  #         path: student # path will be domain.name.com/dev/notes
   #         method: post
   #         cors: true 
-  # createTest:
-  #   handler: handler.createTest # point to exported create function in handler.js
-  #   events:
-  #     - http:
-  #         path: test # path will be domain.name.com/dev/notes
-  #         method: post
-  #         cors: true 
-  createStudent:
-    handler: handler.createStudent # point to exported create function in handler.js
+  createStudentD:
+    handler: handler.createStudentD # point to exported create function in handler.js
     events:
       - http:
           path: student # path will be domain.name.com/dev/notes
           method: post
           cors: true 
-  getStudent:
-    handler: handler.getStudent # point to exported create function in handler.js
-    events:
-      - http:
-          path: student/{learnerid} # path will be domain.name.com/dev/notes
-          method: get
-          cors: true 
-  deleteStudent:
-    handler: handler.deleteStudent
-    events:
-     - http:
-         path: student/del/{id} # path will be domain.name.com/dev/notes/1
-         method: delete
-         cors: true
+  # getStudent:
+  #   handler: handler.getStudent # point to exported create function in handler.js
+  #   events:
+  #     - http:
+  #         path: student/{learnerid} # path will be domain.name.com/dev/notes
+  #         method: get
+  #         cors: true 
+  # deleteStudent:
+  #   handler: handler.deleteStudent
+  #   events:
+  #    - http:
+  #        path: student/del/{id} # path will be domain.name.com/dev/notes/1
+  #        method: delete
+  #        cors: true
 
-  # getAns:
-  #   handler: handler.getAns
+  # # getAns:
+  # #   handler: handler.getAns
+  # #   events:
+  # #     - http:
+  # #         path: ans/{id} # path will be domain.name.com/dev/notes/1
+  # #         method: get
+  # #         cors: true        
+  # # getAllAns:
+  # #   handler: handler.getAllAns
+  # #   events:
+  # #     - http:
+  # #         path: ans # path will be domain.name.com/dev/notes/1
+  # #         method: get
+  # #         cors: true         
+  # Result:
+  #   handler: handler.Result
   #   events:
   #     - http:
-  #         path: ans/{id} # path will be domain.name.com/dev/notes/1
-  #         method: get
-  #         cors: true        
-  # getAllAns:
-  #   handler: handler.getAllAns
-  #   events:
-  #     - http:
-  #         path: ans # path will be domain.name.com/dev/notes/1
-  #         method: get
-  #         cors: true         
-  Result:
-    handler: handler.Result
+  #         path: result/{learnerID}/{difficulty} # path will be domain.name.com/dev/notes/1
+  #         method: post
+  #         cors: true 
+  ResultD:
+    handler: handler.ResultD
     events:
       - http:
-          path: result/{learnerID}/{difficulty} # path will be domain.name.com/dev/notes/1
+          path: dynamo/result/{learnerID}/{difficulty} # path will be domain.name.com/dev/notes/1
           method: post
           cors: true 
-  truncateAnswer:
-    handler: handler.truncateAnswer
-    events:
-     - http:
-         path: answers # path will be domain.name.com/dev/notes/1
-         method: delete
-         cors: true
-plugins:
-  - serverless-offline
+  # truncateAnswer:
+  #   handler: handler.truncateAnswer
+  #   events:
+  #    - http:
+  #        path: answers # path will be domain.name.com/dev/notes/1
+  #        method: delete
+  #        cors: true
+
+resources:
+  Resources:
+    QuestionsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - 
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - 
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.QUESTIONS_TABLE}
+    StudentsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - 
+            AttributeName: learnerID
+            AttributeType: S
+        KeySchema:
+          - 
+            AttributeName: learnerID
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.STUDENTS_TABLE}
+
+

@@ -18,10 +18,10 @@ module.exports.hello = async (event, context) => {
   // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
-module.exports.createQue = (event, context, callback) => {
+module.exports.createQue = async (event, context, callback) => {
   const timestamp = new Date().getTime();
   console.log(event.body);
-  const data = JSON.parse(event);
+  const data = JSON.parse(event.body);
   if (typeof data.text !== 'string') {
     console.error('Validation Failed');
     callback(null, {
@@ -33,7 +33,7 @@ module.exports.createQue = (event, context, callback) => {
   }
 
   const params = {
-    TableName: question-dev,
+    TableName: 'question-dev',
     Item: {
       id: uuid.v1(),
       question: data.text

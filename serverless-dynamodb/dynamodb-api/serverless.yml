@@ -5,10 +5,13 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: dev
+  memorySize: 128 # set the maximum memory of the Lambdas in Megabytes
+  timeout: 10 # the timeout is 10 seconds (default is 6 seconds)
+  region: ap-southeast-1
+
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  region: ap-southeast-1
   tableThroughputs:
     prod: 5
     default: 1
