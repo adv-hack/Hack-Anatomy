@@ -16,7 +16,9 @@
     "dotenv": "^6.0.0",
     "mongoose": "^5.2.2",
     "node-fetch": "^2.2.0",
-    "serverless": "^1.29.2",
-    "sync-request": "^6.0.0"
+    "serverless": "^1.30.3",
+    "serverless-dynamodb-local": "^0.2.33",
+    "sync-request": "^6.0.0",
+    "shuffle-array": "^1.0.1"
   }
 }
