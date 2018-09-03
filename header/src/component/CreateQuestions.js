@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DisplayQuestions from "./DisplayQuestions";
 import { Button, ButtonGroup } from "reactstrap";
+import Pagination from "./PaginationControl";
 class CreateQuestions extends Component {
   constructor(props) {
     super(props);
@@ -187,6 +188,14 @@ class CreateQuestions extends Component {
               </div>
             </div>
 
+            <div className="row">
+              <div className="form-group">
+                <div className="col-md-2" />
+                <div className="col-md-4">
+                   <Pagination />
+                </div>
+              </div>
+            </div>
             <div className="row">
               <div className="form-group">
                 <div className="col-md-2" />
