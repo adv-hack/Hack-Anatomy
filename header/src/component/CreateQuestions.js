@@ -57,7 +57,7 @@ class CreateQuestions extends Component {
     if (this.state.redirectToNewPage === true) {
       debugger;
         return (
-          // data="[{&quot;_id&quot;: &quot;5b4db0271247023544f06377&quot;,&quot;options&quot;: [&quot;option1&quot;,&quot;option2&quot;],&quot;question&quot;: &quot;question1&quot;,&quot;type&quot;: &quot;chkbox&quot;,&quot;difficulty&quot;: 1,&quot;subject&quot;: &quot;Maths&quot;,&quot;__v&quot;: 0},{&quot;_id&quot;: &quot;5b4db0271247023544f06378&quot;,&quot;options&quot;: [&quot;option1&quot;,&quot;option2&quot;,&quot;option3&quot;],&quot;question&quot;: &quot;question1&quot;,&quot;type&quot;: &quot;radio&quot;,&quot;difficulty&quot;: 1,&quot;subject&quot;: &quot;Maths&quot;,&quot;__v&quot;: 0}]" 
+          // data="[{&quot;id&quot;: &quot;5b4db0271247023544f06377&quot;,&quot;options&quot;: [&quot;option1&quot;,&quot;option2&quot;],&quot;question&quot;: &quot;question1&quot;,&quot;type&quot;: &quot;chkbox&quot;,&quot;difficulty&quot;: 1,&quot;subject&quot;: &quot;Maths&quot;,&quot;__v&quot;: 0},{&quot;id&quot;: &quot;5b4db0271247023544f06378&quot;,&quot;options&quot;: [&quot;option1&quot;,&quot;option2&quot;,&quot;option3&quot;],&quot;question&quot;: &quot;question1&quot;,&quot;type&quot;: &quot;radio&quot;,&quot;difficulty&quot;: 1,&quot;subject&quot;: &quot;Maths&quot;,&quot;__v&quot;: 0}]" 
           <DisplayQuestions data={this.state} />
         );
     }

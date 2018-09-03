@@ -40,7 +40,7 @@ class PostQuestions extends Component {
     var jsonData = [];
     this.quearr.map(statevalue => {
       jsonData.push({
-        question: statevalue.questionid,
+        id: statevalue.questionid,
         answer: statevalue.answer
       });
     });
