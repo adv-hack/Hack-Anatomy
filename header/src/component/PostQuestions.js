@@ -33,8 +33,10 @@ class PostQuestions extends Component {
   }
 
   componentWillMount() {
-    var url =
-      "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/result/"+  this.data.learnerID +"/" + this.data.difficulty;
+    debugger;
+    // var url =
+    //   "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/result/"+  this.data.learnerID +"/" + this.data.difficulty;
+    var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/dynamo/result/"+  this.data.learnerID +"/" + this.data.difficulty;
     var jsonData = [];
     this.quearr.map(statevalue => {
       jsonData.push({

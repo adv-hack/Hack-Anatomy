@@ -14,8 +14,9 @@ class Report extends Component {
   }
   componentWillMount() {
    var  learnerResponse1 = [];
-    var url =
-    "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/student/123123"
+    // var url =
+    // "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/student/123123"
+    var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/student/123123"
     
     var finalcallurl =
     "http://13.250.105.2:5001/predict/as"
