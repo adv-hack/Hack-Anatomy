@@ -120,7 +120,7 @@ def get_synonims(text):
 
 def removestopword(text):
     word_tokens = word_tokenize(text.lower())
-    stop_words = set(stopwords.words('english'))
+    stop_words = STOP_WORDS #set(stopwords.words('english'))
     answer_array = [w for w in word_tokens if not w in stop_words]
     return answer_array
 
