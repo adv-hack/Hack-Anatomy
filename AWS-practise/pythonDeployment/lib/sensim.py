@@ -27,7 +27,6 @@ from subprocess import check_output
 from nltk.metrics import edit_distance
 import spacy
 
-import googleapiclient.discovery
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 import json
