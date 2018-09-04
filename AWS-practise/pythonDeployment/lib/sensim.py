@@ -25,11 +25,104 @@ from nltk.corpus import wordnet as wn
 import re
 from subprocess import check_output
 from nltk.metrics import edit_distance
-
+import spacy
 
 def callMe():
     return 'you called me'
 
+def getAvgRunAvgBen(modelAns, actAns):
+    x = run_avg_benchmark(actAns, actAns, model=word2vec)
+    y= run_avg_benchmark(modelAns, actAns, model=word2vec)
+    z=run_avg_benchmark(modelAns, modelAns, model=word2vec)
+    return (2*y)/(x+z)
+
+def getSpacySim(modelAns, actAns):
+    doc1 = nlp(modelAns)
+    doc2 = nlp(actAns)
+    return doc1.similarity(doc2)
+
+def getAdvancedSim(modelAns, actAns):
+    act_ans = get_synonims(actAns)
+    mod_ans = get_synonims(modelAns)
+    return round(float(get_similarity(act_ans,mod_ans)),6)
+
+def getAvgSimilarity(modelAns, actAns):
+    sim1 = getAvgRunAvgBen(modelAns, actAns)
+    sim2 = 0.5 * getSpacySim(modelAns,actAns)
+    sim3 = getAdvancedSim(modelAns, actAns)
+    #sim4 = getDiffSentiment(modelAns, actAns)
+    #return ((0.7*(sim1+sim2+sim3))+(0.3*sim4))/4
+    return (sim1+sim2+sim3)/3
+
+def getDiffSentiment(modelAns, actAns):
+    modelSent = findSentiment(modelAns)
+    actSent = findSentiment(actAns)
+    return (1 - abs(model_sentiment-act_sentiment))/2                
+
+def get_similarity(act_ans,mod_ans):
+    count=0
+    actual_ans_len =len(act_ans)
+    modal_ans_len =len(mod_ans)
+    for fw in act_ans:
+        if fw in mod_ans:
+            count+=1
+            mod_ans.remove(fw)
+    
+    final_mod_ans  = len(mod_ans)
+    x = float((count/actual_ans_len)+(count/modal_ans_len))/2
+    fresult = x #(x+x1)/2
+    
+    return fresult
+
+def getRecommendation(json_string):
+    easyCount = 0
+    mediumCount = 0
+    hardCount = 0
+    jsonToPython = json.loads(json_string)
+    #print(jsonToPython)
+    learnerModel = float(jsonToPython["model"])
+    
+    df = pd.read_csv('C:\\trainingtestingdata(1).csv')
+    pp = df.loc[(df["model"]>=(learnerModel)) & (df["model"]<=(learnerModel + 0.10)) , ["EasyQuestions","AvgPerEasyQue","MediumQue","AvgPerMedQue","HardQuestions","AvgPerHardQue","model"]].head(10)
+    
+    for index, row in pp.iterrows():
+        #print(int(jsonToPython["EasyQuestions"])*float(jsonToPython["AvgPerEasyQue"]))
+        if(int(row["EasyQuestions"])*float(row["AvgPerEasyQue"]) > int(jsonToPython["EasyQuestions"])*float(jsonToPython["AvgPerEasyQue"])):
+            easyCount +=1
+        if(int(row["MediumQue"])*float(row["AvgPerMedQue"]) > int(jsonToPython["MediumQue"])*float(jsonToPython["AvgPerMedQue"])):
+            mediumCount +=1
+        if(int(row["HardQuestions"])*float(row["AvgPerHardQue"]) > int(jsonToPython["HardQuestions"])*float(jsonToPython["AvgPerHardQue"])):
+            hardCount +=1
+
+    if((easyCount > mediumCount) & (easyCount > hardCount)):
+        print('Easy Test is recomended')
+    elif((mediumCount > easyCount) & (mediumCount > hardCount)):
+        print('Medium Test is recomended')  
+    elif((hardCount > easyCount) & (hardCount > mediumCount)):
+        print('Hard Test is recomended') 
+    elif((easyCount == mediumCount) or (easyCount == hardCount)):
+        print('Easy Test is recomended')
+    elif((mediumCount == hardCount) or (easyCount == hardCount)):
+        print('Medium Test is recomended')
+
+def get_synonims(text):
+    #actual_answer_array = []
+    actual_answer_array = [w for w in removestopword(text)]
+    #print(actual_answer_array)
+    actual_answer_synonim = actual_answer_array
+    
+    for w in actual_answer_array:
+        syns = wordnet.synsets(w)
+        for w in syns:
+            if w.lemmas()[0].name() not in actual_answer_synonim:
+                actual_answer_synonim.append(w.lemmas()[0].name()) 
+    return (actual_answer_synonim[:200]) 
+
+def removestopword(text):
+    word_tokens = word_tokenize(text.lower())
+    stop_words = set(stopwords.words('english'))
+    answer_array = [w for w in word_tokens if not w in stop_words]
+    return answer_array
 
 #method 1
 def run_avg_benchmark(sentences1, sentences2, model=None, use_stoplist=False, doc_freqs=None): 
