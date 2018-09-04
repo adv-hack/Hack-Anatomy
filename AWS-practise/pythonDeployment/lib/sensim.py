@@ -120,8 +120,8 @@ def get_synonims(text):
 
 def removestopword(text):
     word_tokens = word_tokenize(text.lower())
-    stop_words = STOP_WORDS #set(stopwords.words('english'))
-    answer_array = [w for w in word_tokens if not w in stop_words]
+    #stop_words = STOP_WORDS #set(stopwords.words('english'))
+    answer_array = [w for w in word_tokens if not w in STOP_WORDS]
     return answer_array
 
 #method 1
@@ -483,7 +483,7 @@ word_vectors = api.load("glove-wiki-gigaword-100")
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/mount/data/astral-shape-187315-e8e3ba35bd82.json"
 
 STOP_WORDS = nltk.download('stopwords')
-
+nlp = spacy.load('en_core_web_sm')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
