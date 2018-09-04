@@ -44,7 +44,7 @@ def sen_sim(sen):
     model_sentiment = lib.findSentiment(modelAns)
     act_sentiment = lib.findSentiment(actAns)
     if (model_sentiment <= -0.25 and act_sentiment <= -0.25) or (model_sentiment > -0.25 and act_sentiment > -0.25 and model_sentiment <= 0.25 and act_sentiment <= 0.25) or (model_sentiment > 0.25 and act_sentiment > 0.25 and model_sentiment <= 1 and act_sentiment <= 1):
-        ansss = lib.getAvgSimilarity(modelAns, actAns)
+        ansss = str(lib.getAvgSimilarity(modelAns, actAns))
         # absvalue = abs(model_sentiment-act_sentiment)
         # if absvalue == 0:
         #     absvalue = 1
