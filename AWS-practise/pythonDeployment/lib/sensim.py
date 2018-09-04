@@ -48,7 +48,7 @@ def getAdvancedSim(modelAns, actAns):
 
 def getAvgSimilarity(modelAns, actAns):
     sim1 = getAvgRunAvgBen(modelAns, actAns)
-    sim2 = 0.5 * getSpacySim(modelAns,actAns)
+    sim2 = 0 #0.5 * getSpacySim(modelAns,actAns)
     sim3 = getAdvancedSim(modelAns, actAns)
     #sim4 = getDiffSentiment(modelAns, actAns)
     #return ((0.7*(sim1+sim2+sim3))+(0.3*sim4))/4
