@@ -123,7 +123,7 @@ export class Content extends Component {
                 <CheckboxQuestionList
                   label={innerArray.question}
                   value={innerArray.options}
-                  questionid={innerArray._id}
+                  questionid={innerArray.id}
                   onCheckBoxUpdate={this.onCheckBoxUpdate}
                 />
               </div>
@@ -145,7 +145,7 @@ export class Content extends Component {
                   <RadioButtonQuestionList
                     label={innerArray.question}
                     value={innerArray.options}
-                    questionid={innerArray._id}
+                    questionid={innerArray.id}
                     onRadioUpdate={this.onRadioUpdate}
                   />
                 </div>
@@ -167,7 +167,7 @@ export class Content extends Component {
                 <TextAreaQuestionList
                   label={innerArray.question}
                   value={innerArray.options}
-                  questionid={innerArray._id}
+                  questionid={innerArray.id}
                 />
               </div>
             );

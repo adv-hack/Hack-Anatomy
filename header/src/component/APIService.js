@@ -32,13 +32,15 @@ class APIService extends Component {
   };
 
   componentWillMount() {
+    debugger;
     //var url = "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/questions/"+ this.data.noOfQuestions + "/"+ this.data.subject + "/"+ this.data.difficulty +"/" + this.data.learnerID;
-    var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/dynamo/questions/"+ this.data.noOfQuestions + "/"+ this.data.subject + "/"+ this.data.difficulty +"/" + this.data.learnerID;
+    var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/dynamo/questions/"+ this.data.noOfQuestions + "/"+ this.data.subject.toString().toLowerCase() + "/"+ this.data.difficulty.toString().toLowerCase() +"/" + this.data.learnerID;
     
     fetch(url)
       .then(res => res.json())
       .then(
         result => {
+          debugger;
           this.setState({
             isLoaded: true,
             items: result
@@ -46,6 +48,7 @@ class APIService extends Component {
           this.getQuestionsLength(this.state.items.length);
         },
         error => {
+          debugger;
           this.setState({
             isLoaded: true,
             error
@@ -82,7 +85,7 @@ class APIService extends Component {
               <CheckboxQuestionList
                 question={innerArray.question}
                 value={innerArray.options}
-                questionid={innerArray._id}
+                questionid={innerArray.id}
                 onCheckBoxUpdate={this.onCheckBoxUpdate}
                 selectedAnswer=""
               />
@@ -106,7 +109,7 @@ class APIService extends Component {
                 <RadioButtonQuestionList
                   question={innerArray.question}
                   value={innerArray.options}
-                  questionid={innerArray._id}
+                  questionid={innerArray.id}
                   onRadioUpdate={this.onRadioUpdate}
                   selectedAnswer=""
                 />
@@ -129,7 +132,7 @@ class APIService extends Component {
             <TextAreaQuestionList
               question={innerArray.question}
               value={innerArray.options}
-              questionid={innerArray._id}
+              questionid={innerArray.id}
               onTextAreaUpdate ={this.onTextAreaUpdate}
               selectedAnswer=""
             />
