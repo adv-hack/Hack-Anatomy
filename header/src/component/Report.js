@@ -19,7 +19,7 @@ class Report extends Component {
     var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/student/123123"
     
     var finalcallurl =
-    "http://13.250.105.2:5001/predict/as"
+    "http://54.255.204.22:5001/predict/as"
       //  + this.data.learnerID;
     fetch(url)
       .then(res => res.json())
