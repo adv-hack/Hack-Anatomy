@@ -27,6 +27,11 @@ from subprocess import check_output
 from nltk.metrics import edit_distance
 import spacy
 
+import googleapiclient.discovery
+from nltk.corpus import stopwords
+from nltk.corpus import wordnet
+import json
+
 def callMe():
     return 'you called me'
 
@@ -48,7 +53,7 @@ def getAdvancedSim(modelAns, actAns):
 
 def getAvgSimilarity(modelAns, actAns):
     sim1 = getAvgRunAvgBen(modelAns, actAns)
-    sim2 = 0 #0.5 * getSpacySim(modelAns,actAns)
+    sim2 = 0.5 * getSpacySim(modelAns,actAns)
     sim3 = getAdvancedSim(modelAns, actAns)
     #sim4 = getDiffSentiment(modelAns, actAns)
     #return ((0.7*(sim1+sim2+sim3))+(0.3*sim4))/4
@@ -120,8 +125,8 @@ def get_synonims(text):
 
 def removestopword(text):
     word_tokens = word_tokenize(text.lower())
-    #stop_words = STOP_WORDS #set(stopwords.words('english'))
-    answer_array = [w for w in word_tokens if not w in STOP_WORDS]
+    stop_words = set(stopwords.words('english'))
+    answer_array = [w for w in word_tokens if not w in stop_words]
     return answer_array
 
 #method 1
