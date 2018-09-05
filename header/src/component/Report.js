@@ -26,7 +26,7 @@ class Report extends Component {
       .then(
         result => {
           learnerResponse1.push({
-            subjectid: 1,
+            subjectid: 5,
             EasyQuestions: result[0].easyNo,
             //AvgPerEasyQue: result[0].Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / result[0].totNo,
             AvgPerEasyQue: result[0].Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result[0].Emarks.length), // result[0].totNo),
