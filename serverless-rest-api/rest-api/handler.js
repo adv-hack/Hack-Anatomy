@@ -433,6 +433,22 @@ module.exports.getStudent = (event, context, callback) => {
   });
 };
 
+module.exports.getStudentD = (event, context, callback) => {
+  fetchStudent(event.pathParameters.learnerid)
+  .then(result => {
+    const response = {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+        "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
+      },
+      //body: 'Nach mari sathe',
+      body: JSON.stringify(result),
+    };
+    callback(null, response);
+  })
+};
+
 
 module.exports.getTemp = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -502,9 +518,13 @@ var getTextAns = function (modelAns, actAns) {
 var TextArea = function (ans, i, event, objj) {
   return new Promise(function (resolve, reject) {
     {
+      // console.log('answer for API : '+objj.rightAns[0]);
+      // console.info('answer for API : '+ansd.answer[0]);
       getTextAns(objj.rightAns[0], objj.answer[0])
         .then(ansd => {
           let similarity = ansd;
+          // console.log('answer from API : '+ansd);
+          // console.info('answer from API : '+ansd);
           totMarks += similarity;
           for (var j = 0; j < obj.length; j++) {
             if (obj[j].id == ans[i].id) {
@@ -707,6 +727,7 @@ module.exports.ResultD = (event, context, callback) => {
   promises = [];
   ques = [];
   obj = JSON.parse(event.body);
+
   let quePromises = [];
   for (var i = 0; i < obj.length; i++) {
     //call query function to fetch question and fill it into ques json
