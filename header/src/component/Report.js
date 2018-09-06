@@ -27,13 +27,13 @@ class Report extends Component {
         result => {
           learnerResponse1.push({
             subjectid: 5,
-            EasyQuestions: result[0].easyNo,
+            EasyQuestions: result.easyNo,
             //AvgPerEasyQue: result[0].Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / result[0].totNo,
-            AvgPerEasyQue: result[0].Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result[0].Emarks.length), // result[0].totNo),
-            MediumQue: result[0].mediumNo,
-            AvgPerMedQue: result[0].Mmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result[0].Emarks.length),
-            HardQuestions: result[0].hardNo,
-            AvgPerHardQue: result[0].Hmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result[0].Emarks.length),
+            AvgPerEasyQue: result.Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length), // result[0].totNo),
+            MediumQue: result.mediumNo,
+            AvgPerMedQue: result.Mmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
+            HardQuestions: result.hardNo,
+            AvgPerHardQue: result.Hmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
           })
 
           this.setState({
