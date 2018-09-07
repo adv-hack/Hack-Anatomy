@@ -46,6 +46,12 @@ def getSpacySim(modelAns, actAns):
     return doc1.similarity(doc2)
 
 def getAdvancedSim(modelAns, actAns):
+    act_ans = removestopword(actAns)
+    mod_ans_len = len(removestopword(modelAns))
+    mod_ans = get_synonims(modelAns)
+    return round(float(get_similarity(act_ans,mod_ans,mod_ans_len)),6)
+
+def getAdvancedSim(modelAns, actAns):
     act_ans = get_synonims(actAns)
     mod_ans = get_synonims(modelAns)
     return round(float(get_similarity(act_ans,mod_ans)),6)
@@ -63,7 +69,21 @@ def getDiffSentiment(modelAns, actAns):
     actSent = findSentiment(actAns)
     return (1 - abs(model_sentiment-act_sentiment))/2                
 
-def get_similarity(act_ans,mod_ans):
+def get_similarity(act_ans,mod_ans,mod_ans_len):
+    count=0
+    actual_ans_len =len(act_ans)
+    modal_ans_len =len(mod_ans)
+    for fw in act_ans:
+        if fw in mod_ans:
+            count+=1
+            mod_ans.remove(fw)
+    
+    final_mod_ans  = len(mod_ans)
+    x = float((count/actual_ans_len)+(count/mod_ans_len))/2
+    fresult = x #(x+x1)/2
+    return fresult
+
+def get_similarity_invalid(act_ans,mod_ans):
     count=0
     actual_ans_len =len(act_ans)
     modal_ans_len =len(mod_ans)
