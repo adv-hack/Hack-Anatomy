@@ -51,7 +51,7 @@ def getAdvancedSim(modelAns, actAns):
     mod_ans = get_synonims(modelAns)
     return round(float(get_similarity(act_ans,mod_ans,mod_ans_len)),6)
 
-def getAdvancedSim(modelAns, actAns):
+def getAdvancedSimFake(modelAns, actAns):
     act_ans = get_synonims(actAns)
     mod_ans = get_synonims(modelAns)
     return round(float(get_similarity(act_ans,mod_ans)),6)
