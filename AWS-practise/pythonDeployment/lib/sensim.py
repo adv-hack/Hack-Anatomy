@@ -79,7 +79,7 @@ def get_similarity(act_ans,mod_ans,mod_ans_len):
             mod_ans.remove(fw)
     
     final_mod_ans  = len(mod_ans)
-    x = float((count/actual_ans_len)+(count/mod_ans_len))/2
+    x = float((count/(actual_ans_len+0.00001))+(count/(mod_ans_len+0.00001)))/2
     fresult = x #(x+x1)/2
     return fresult
 
