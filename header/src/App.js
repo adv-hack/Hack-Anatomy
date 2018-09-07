@@ -7,13 +7,16 @@ class App extends Component {
     <div className="App">
       <header className="container">
          <div className="row">
-           <div className="col-md-12" style={{textAlign:'center',fontSize:'25px',fontWeight:'bold'}}>Hack Anatomy</div>
+           <div className="col-md-12" style={{textAlign:'center',fontSize:'25px',fontWeight:'bold'}}>Education Assessments and Forecasts</div>
        </div>
        <div className="row">
          <hr/>
        </div>
        <CreateQuestions />
        </header>
+      <div className="row footer">
+           <div className="col-md-12" style={{fontSize:'15px'}}>© Hack Anatomy - Advanced. All rights reserved.</div>
+       </div>
     </div>
     );
   }

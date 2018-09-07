@@ -515,7 +515,7 @@ var getTextAns = function (modelAns, actAns) {
 }
 
 
-var TextArea = function (ans, i, event, objj) {
+var TextArea = function (ans, i, event, objj, isEnd) {
   return new Promise(function (resolve, reject) {
     {
       // console.log('answer for API : '+objj.rightAns[0]);
@@ -565,8 +565,8 @@ var TextArea = function (ans, i, event, objj) {
                 },
                 ReturnValues: "ALL_NEW"
               };
-
-              updateStudentDB(updateStudent)
+              if(isEnd){
+                updateStudentDB(updateStudent)
                 .then(result => {
                   finalAns.Result = obj;
                   finalAns.Total = obj.totTestMarks;
@@ -578,6 +578,11 @@ var TextArea = function (ans, i, event, objj) {
                   // };
                   // callback(null, response);
                 });
+              }else{
+                finalAns.Result = obj;
+                finalAns.Total = obj.totTestMarks;
+                resolve(JSON.stringify(finalAns));
+              }
             });
         })
         .catch(err => {
@@ -588,7 +593,7 @@ var TextArea = function (ans, i, event, objj) {
     }
   });
 };
-var checkboxRadio = function (ans, i, j, event) {
+var checkboxRadio = function (ans, i, j, event, isEnd) {
   return new Promise(function (resolve, reject) {
     if (
       ans[i].questiontype == "chkbox" ||
@@ -639,8 +644,8 @@ var checkboxRadio = function (ans, i, j, event) {
             },
             ReturnValues: "ALL_NEW"
           };
-
-          updateStudentDB(updateStudent)
+          if(isEnd){
+            updateStudentDB(updateStudent)
             .then(result => {
               finalAns.Result = obj;
               finalAns.Total = obj.totTestMarks;
@@ -652,6 +657,12 @@ var checkboxRadio = function (ans, i, j, event) {
               // };
               // callback(null, response);
             });
+          }else{
+            finalAns.Result = obj;
+            finalAns.Total = obj.totTestMarks;
+            resolve(JSON.stringify(finalAns));
+          }
+
         });
 
       // finalAns.Result = obj;
@@ -678,9 +689,9 @@ var someFunction = function (ans, event, i) {
       obj[j].options = ans[i].options;
       //console.log(obj[j]);
       if (ans[i].questiontype == "text") {
-        promises.push(TextArea(ans, i, event, obj[j]));
+        promises.push(TextArea(ans, i, event, obj[j], j==(obj.length-1)));
       } else {
-        promises.push(checkboxRadio(ans, i, j, event));
+        promises.push(checkboxRadio(ans, i, j, event, j==(obj.length-1)));
       }
     }
   }

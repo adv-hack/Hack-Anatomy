@@ -6,9 +6,9 @@ class CreateQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      learnerID: "123123",
+      learnerID: "989898",
       testid: "",
-      subject: "Maths",
+      subject: "Science",
       difficulty: "Easy",
       noOfQuestions: "20",
       redirectToNewPage: false,
@@ -62,10 +62,9 @@ class CreateQuestions extends Component {
         );
     }
     var subjects = [
-      { name: "Maths", id: 1 },
-      { name: "Science", id: 2 },
-      { name: "English", id: 3 },
-      { name: "Social Studies", id: 4 }
+      { name: "Science", id: 1 },
+      { name: "English", id: 2 },
+      { name: "Social Studies", id: 3 }
     ];
 
     let subjectsItems = subjects.map(subject => (
@@ -79,16 +78,16 @@ class CreateQuestions extends Component {
               <div className="row">
                 <div className="col-md-2">
                   <label htmlFor="test" className="col-xs-offset-1">
-                    Learner ID:
+                    Learner Name:
                   </label>
                 </div>
                 <div className="col-md-4">
                   <input
                     type="text"
                     className="form-control"
-                    value={this.state.learnerID}
-                    onChange={this.handleLearnerIDChange}
-                    placeholder="Learner ID"
+                    //value={this.state.learnerID}
+                    //onChange={this.handleLearnerIDChange}
+                    placeholder="Learner Name"
                   />
                  
                 </div>
@@ -188,14 +187,14 @@ class CreateQuestions extends Component {
               </div>
             </div>
 
-            <div className="row">
+            {/* <div className="row">
               <div className="form-group">
                 <div className="col-md-2" />
                 <div className="col-md-4">
                    <Pagination />
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="row">
               <div className="form-group">
                 <div className="col-md-2" />
