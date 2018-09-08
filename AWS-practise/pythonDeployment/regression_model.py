@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 df=pd.read_csv("https://s3-ap-southeast-1.amazonaws.com/data-for-models-python/data/trainingtestingdata.csv")
 # Use only one feature
 y=df.model
+df = df.drop('referencelink', axis=1)
 X=df.drop('model',axis=1)
 # Split the data into training/testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.2)
