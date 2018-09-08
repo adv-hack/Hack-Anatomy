@@ -89,12 +89,12 @@ def getColoredText(modans, actans):
     strFinalAct=''
     for fw in word_tokens:
         if fw in gkeyword:
-            strFinalAct+='<green>' + fw + '</green> '
+            strFinalAct+='&lt;green&gt;' + fw + '&lt;/green&gt; '
         elif fw in rkeyword:
-            strFinalAct+='<red>' + fw + '</red> '    
+            strFinalAct+='&lt;red&gt;' + fw + '&lt;/red&gt; '    
         else:
             strFinalAct+=fw + ' '
-    return strFinalAct
+    return strFinalAct 
 
 def callMe():
     return 'you called me'
