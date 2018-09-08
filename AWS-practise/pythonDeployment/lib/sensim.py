@@ -31,6 +31,32 @@ from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 import json
 
+def getRecommendation(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasyQue, AvgPerMedQue, AvgPerHardQue):
+    easyCount = 0
+    mediumCount = 0
+    hardCount = 0
+    learnerModel = float(model)
+    df = pd.read_csv("https://s3-ap-southeast-1.amazonaws.com/data-for-models-python/data/trainingtestingdata.csv")
+    pp = df.loc[(df["model"]>=(learnerModel)) & (df["model"]<=(learnerModel + 0.10)) , ["EasyQuestions","AvgPerEasyQue","MediumQue","AvgPerMedQue","HardQuestions","AvgPerHardQue","model"]].head(10)
+    for index, row in pp.iterrows():
+        if(int(row["EasyQuestions"])*float(row["AvgPerEasyQue"]) > int(EasyQuestions)*float(AvgPerEasyQue)):
+            easyCount +=1
+        if(int(row["MediumQue"])*float(row["AvgPerMedQue"]) > int(MediumQue)*float(AvgPerMedQue)):
+            mediumCount +=1
+        if(int(row["HardQuestions"])*float(row["AvgPerHardQue"]) > int(HardQuestions)*float(AvgPerHardQue)):
+            hardCount +=1
+    if((easyCount > mediumCount) & (easyCount > hardCount)):
+        return "easy" #print('Easy Test is recomended')
+    elif((mediumCount > easyCount) & (mediumCount > hardCount)):
+        return "medium" #print('Medium Test is recomended')  
+    elif((hardCount > easyCount) & (hardCount > mediumCount)):
+        return "hard" #print('Hard Test is recomended') 
+    elif((easyCount == mediumCount) or (easyCount == hardCount)):
+        return "easy" #print('Easy Test is recomended')
+    elif((mediumCount == hardCount) or (easyCount == hardCount)):
+        return "medium" #print('Medium Test is recomended')
+
+
 def callMe():
     return 'you called me'
 
