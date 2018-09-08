@@ -160,7 +160,7 @@ class PostQuestions extends Component {
                 >
                   {innerArray.questionDesc}
                 </div>
-                <div className="col-md-12">
+                <div className="col-md-12" style={{marginTop:"5px"}}>
                 <TextAreaQuestionList
                   question={innerArray.questionDesc}
                   value={innerArray.options}

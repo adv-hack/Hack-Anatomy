@@ -32,8 +32,9 @@ class TextAreaQuestionList extends Component {
         else{
             return (
                 <div className="row">
-                <div className="col-lg-10">
-                <Input type="textarea" name="text" onChange={this.handleInputChange} disabled value={this.state.selectedAnswer} />
+                <div className="col-lg-10" style={{padding:"0"}}>
+                {/* <Input type="textarea" name="text" onChange={this.handleInputChange} disabled value={this.state.selectedAnswer} /> */}
+                <strong>Your Answer:</strong>{this.state.selectedAnswer}
                 </div>
               </div>
               );

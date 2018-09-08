@@ -18,11 +18,13 @@ class Dashboard extends Component {
         overallResult: [],
         easyResult: [],
         mediumResult: [],
-        hardResult: []
+        hardResult: [],
+        learnerResponseRecomm:{}
       };
   }
   componentWillMount() {
     var  learnerResponse1 = [];
+    var learnerResponseRecomm1 = {};
      // var url =
      // "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/student/123123"
      var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/student/989898"
@@ -43,6 +45,7 @@ class Dashboard extends Component {
              AvgPerMedQue: result.Mmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
              HardQuestions: result.hardNo,
              AvgPerHardQue: result.Hmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
+             referencelink:result.referencelink
            })
  
            this.setState({
@@ -60,12 +63,26 @@ class Dashboard extends Component {
            .then(res => res.json())
            .then(
              fresult => {
+              
+                learnerResponseRecomm1.subjectid= 5,
+                learnerResponseRecomm1.EasyQuestions= result.easyNo,
+                //AvgPerEasyQue: result[0].Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / result[0].totNo,
+                learnerResponseRecomm1.AvgPerEasyQue= result.Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length), // result[0].totNo),
+                learnerResponseRecomm1.MediumQue= result.mediumNo,
+                learnerResponseRecomm1.AvgPerMedQue= result.Mmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
+                learnerResponseRecomm1.HardQuestions= result.hardNo,
+                learnerResponseRecomm1.AvgPerHardQue= result.Hmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
+                learnerResponseRecomm1.referencelink=result.referencelink,
+                learnerResponseRecomm1.model=fresult
+              
+
                this.setState({
                 finalResult: fresult * 100,
                 overallResult: result.Tmarks, 
                 easyResult:result.Emarks,
                 mediumResult:result.Mmarks,
                 hardResult:result.Hmarks,
+                learnerResponseRecomm:learnerResponseRecomm1,
                 isLoaded:true
                });
              },
@@ -105,7 +122,7 @@ class Dashboard extends Component {
             <h3>Recommendation</h3>
             
           </div>
-          <Recommendation />
+          <Recommendation value={this.state.learnerResponseRecomm} />
           </div>
         </div>
         <div className="row">
