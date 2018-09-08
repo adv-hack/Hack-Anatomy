@@ -57,6 +57,7 @@ def getRecommendation(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasy
 
 def getRecommendedMaterial(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasyQue, AvgPerMedQue, AvgPerHardQue, material):
     referenceArr = []
+    refStr = ""
     learnerModel = float(model)
     pp = df.loc[(df["model"]>=(learnerModel)) & (df["model"]<=(learnerModel + 0.10)) , ["EasyQuestions","AvgPerEasyQue","MediumQue","AvgPerMedQue","HardQuestions","AvgPerHardQue","model","referencelink"]].head(10)
     for index, row in pp.iterrows():
@@ -64,7 +65,9 @@ def getRecommendedMaterial(model, EasyQuestions, MediumQue, HardQuestions, AvgPe
             referenceArr.append(row["referencelink"])
     if material in referenceArr:
         referenceArr.remove(material)
-    return str(referenceArr)
+    for s in referenceArr:
+        refStr += s + "#"
+    return refStr
 
 
 def callMe():
