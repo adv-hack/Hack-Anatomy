@@ -16,6 +16,15 @@ CORS(app)
 def hello():
     return "Hello World2!"
 
+@app.route('/recommend/<nm>',methods = ['POST', 'GET'])
+def recommend(nm):
+    if request.method == 'POST':
+        content = request.get_json(force=True)
+        return lib.getRecommendation(content["model"], content["EasyQuestions"], content["MediumQue"], content["HardQuestions"], content["AvgPerEasyQue"], content["AvgPerMedQue"], content["AvgPerHardQue"])
+    else:
+        return ''
+
+
 @app.route('/predict/<nm>',methods = ['POST', 'GET'])
 def login(nm):
     if request.method == 'POST':
