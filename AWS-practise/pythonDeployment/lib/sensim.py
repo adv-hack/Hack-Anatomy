@@ -55,6 +55,17 @@ def getRecommendation(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasy
     elif((mediumCount == hardCount) or (easyCount == hardCount)):
         return "medium" #print('Medium Test is recomended')
 
+def getRecommendedMaterial(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasyQue, AvgPerMedQue, AvgPerHardQue, material):
+    referenceArr = []
+    learnerModel = float(model)
+    pp = df.loc[(df["model"]>=(learnerModel)) & (df["model"]<=(learnerModel + 0.10)) , ["EasyQuestions","AvgPerEasyQue","MediumQue","AvgPerMedQue","HardQuestions","AvgPerHardQue","model","referencelink"]].head(10)
+    for index, row in pp.iterrows():
+        if row["referencelink"] not in referenceArr:
+            referenceArr.append(row["referencelink"])
+    if material in referenceArr:
+        referenceArr.remove(material)
+    return str(referenceArr)
+
 
 def callMe():
     return 'you called me'
