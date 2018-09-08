@@ -4,6 +4,9 @@ import APIService from "./APIService";
 import PostQuestions from "./PostQuestions";
 import Report from "./Report";
 import LineChartReport from "./LineChartReport";
+import OverallProgressChart from "./OverallProgressChart";
+import EasyDifficultyProgressChart from "./EasyDifficultyProgressChart";
+import MediumDifficultyProgressChart from "./MediumDifficultyProgressChart";
 //import ReactSpeedometer from "react-d3-speedometer";
 
 class DisplayQuestions extends Component {
@@ -125,7 +128,8 @@ class DisplayQuestions extends Component {
         //     </div>
         //   </div>
         // </div>
-        <Report />
+        
+         <Report />
       );
     }
     else if(this.state.isSubmit)
