@@ -55,28 +55,15 @@ class OverallProgressChart extends Component{
         } else {
         return (
           <div className="row">
-          <div className="col-md-12">
-          <div style={{textAlign:"center"}}>
-              <h1>Overall Progress</h1>
-            </div>
-          </div>
-          <div className="row">
-          <div className="col-md-12">
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
           <LineChart 
               id="overall"
-              width={600}
+              width={500}
               height={400}
               data={data}
               xLabel= "Total Test"
               yLabel="Total Marks"
               onPointHover={(obj) => 'Test:' + obj.x + '<br />Marks:' + obj.y}
             />
-          </div>
-          <div className="col-md-4"></div>
-          </div>
-          </div>
           </div>
         );
       }

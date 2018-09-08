@@ -16,11 +16,11 @@ class LineChartReport extends Component {
                 <div className="App">
                     <h1>Line Chart</h1>
                     <LineChart 
+                        data={data}
                         width={500}
                         height={400}
-                        data={data}
                     />
-                </div>				
+                </div>			
             </div>
         );
     }

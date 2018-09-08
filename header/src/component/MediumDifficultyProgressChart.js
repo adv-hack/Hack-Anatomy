@@ -41,7 +41,7 @@ class MediumDifficultyProgressChart extends Component{
        render() {
         const data = [
             {									
-                color: "steelblue", 
+                color: "yellow", 
                 points: this.state.finalResult
             }
         ];
@@ -53,18 +53,9 @@ class MediumDifficultyProgressChart extends Component{
         } else {
         return (
           <div className="row">
-          <div className="col-md-12">
-          <div style={{textAlign:"center"}}>
-              <h1>Medium Test Progress</h1>
-            </div>
-          </div>
-          <div className="row">
-          <div className="col-md-12">
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
-          <LineChart 
+                    <LineChart 
               id="medium"
-              width={600}
+              width={500}
               height={400}
               data={data}
               xLabel= "Total Test"
@@ -72,10 +63,7 @@ class MediumDifficultyProgressChart extends Component{
               onPointHover={(obj) => 'Test:' + obj.x + '<br />Marks:' + obj.y}
             />
           </div>
-          <div className="col-md-4"></div>
-          </div>
-          </div>
-          </div>
+         
         );
       }
     }

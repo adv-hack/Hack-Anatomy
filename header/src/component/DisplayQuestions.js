@@ -7,6 +7,7 @@ import LineChartReport from "./LineChartReport";
 import OverallProgressChart from "./OverallProgressChart";
 import EasyDifficultyProgressChart from "./EasyDifficultyProgressChart";
 import MediumDifficultyProgressChart from "./MediumDifficultyProgressChart";
+import Dashboard from "./Dashboard";
 //import ReactSpeedometer from "react-d3-speedometer";
 
 class DisplayQuestions extends Component {
@@ -118,18 +119,7 @@ class DisplayQuestions extends Component {
   render() {
     if (this.state.redirectToNewPage === true) {
       return (
-        // <div className="row">
-        //   <div className="col-md-12">
-        //     <div className="col-md-6">
-        //       <Report />
-        //     </div>
-        //     <div className="col-md-6">
-        //       <LineChartReport />
-        //     </div>
-        //   </div>
-        // </div>
-        
-         <Report />
+         <Dashboard />
       );
     }
     else if(this.state.isSubmit)

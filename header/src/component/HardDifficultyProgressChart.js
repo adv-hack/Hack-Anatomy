@@ -42,7 +42,7 @@ class HardDifficultyProgressChart extends Component{
        render() {
         const data = [
             {									
-                color: "steelblue", 
+                color: "orange", 
                 points: this.state.finalResult
             }
         ];
@@ -54,28 +54,15 @@ class HardDifficultyProgressChart extends Component{
         } else {
         return (
           <div className="row">
-          <div className="col-md-12">
-          <div style={{textAlign:"center"}}>
-              <h1>Hard Test Progress</h1>
-            </div>
-          </div>
-          <div className="row">
-          <div className="col-md-12">
-          <div className="col-md-4"></div>
-          <div className="col-md-4">
-          <LineChart 
+                    <LineChart 
               id="hard"
-              width={600}
-              height={400}
               data={data}
+              width={500}
+              height={400}
               xLabel= "Total Test"
               yLabel="Total Marks"
               onPointHover={(obj) => 'Test:' + obj.x + '<br />Marks:' + obj.y}
             />
-          </div>
-          <div className="col-md-4"></div>
-          </div>
-          </div>
           </div>
         );
       }
