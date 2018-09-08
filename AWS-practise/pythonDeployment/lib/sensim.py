@@ -123,7 +123,7 @@ def get_similarity_invalid(act_ans,mod_ans):
     
     return fresult
 
-def getRecommendation(json_string):
+def getRecommendationInvalid(json_string):
     easyCount = 0
     mediumCount = 0
     hardCount = 0
