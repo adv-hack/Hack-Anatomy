@@ -70,6 +70,32 @@ def getRecommendedMaterial(model, EasyQuestions, MediumQue, HardQuestions, AvgPe
     return refStr
 
 
+def getColoredText(modans, actans):
+    act_ans = removestopword(actans)
+    mod_ans = removestopword(modans)
+    gkeyword=[]
+    count=0
+    for fw in act_ans:
+        if fw in mod_ans:
+            count+=1
+            mod_ans.remove(fw)
+            gkeyword.append(fw)
+    for ga in gkeyword:
+        if ga in act_ans:
+            act_ans.remove(ga)
+    rkeyword=[]
+    rkeyword=act_ans
+    word_tokens = word_tokenize(actans.lower())
+    strFinalAct=''
+    for fw in word_tokens:
+        if fw in gkeyword:
+            strFinalAct+='<green>' + fw + '</green> '
+        elif fw in rkeyword:
+            strFinalAct+='<red>' + fw + '</red> '    
+        else:
+            strFinalAct+=fw + ' '
+    return strFinalAct
+
 def callMe():
     return 'you called me'
 
