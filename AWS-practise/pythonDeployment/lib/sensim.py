@@ -36,7 +36,6 @@ def getRecommendation(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasy
     mediumCount = 0
     hardCount = 0
     learnerModel = float(model)
-    df = pd.read_csv("https://s3-ap-southeast-1.amazonaws.com/data-for-models-python/data/trainingtestingdata.csv")
     pp = df.loc[(df["model"]>=(learnerModel)) & (df["model"]<=(learnerModel + 0.10)) , ["EasyQuestions","AvgPerEasyQue","MediumQue","AvgPerMedQue","HardQuestions","AvgPerHardQue","model"]].head(10)
     for index, row in pp.iterrows():
         if(int(row["EasyQuestions"])*float(row["AvgPerEasyQue"]) > int(EasyQuestions)*float(AvgPerEasyQue)):
@@ -537,3 +536,4 @@ nlp = spacy.load('en_core_web_sm')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
+df = pd.read_csv("https://s3-ap-southeast-1.amazonaws.com/data-for-models-python/data/trainingtestingdata.csv")
