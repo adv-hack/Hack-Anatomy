@@ -58,10 +58,14 @@ def sen_sim(sen):
     actAns = data['actAns']
     modelword2vec = lib.word2vec
     ansss = "0"
+    ansKeyword = ""
+    response = ""
     model_sentiment = lib.findSentiment(modelAns)
     act_sentiment = lib.findSentiment(actAns)
     if (model_sentiment <= -0.25 and act_sentiment <= -0.25) or (model_sentiment > -0.25 and act_sentiment > -0.25 and model_sentiment <= 0.25 and act_sentiment <= 0.25) or (model_sentiment > 0.25 and act_sentiment > 0.25 and model_sentiment <= 1 and act_sentiment <= 1):
         ansss = str(lib.getAvgSimilarity(modelAns, actAns))
+        ansKeyword = str(lib.getColoredText(modelAns, actAns))
+        response = ansss + "#" + ansKeyword
         # absvalue = abs(model_sentiment-act_sentiment)
         # if absvalue == 0:
         #     absvalue = 1
@@ -76,7 +80,7 @@ def sen_sim(sen):
         # avgofthreemodels = (sim1 + (1 / sim2))/2
         # answervalue = sentimentvalue*avgofthreemodels
         # ansss = str(answervalue)
-    return ansss
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5001)
