@@ -80,7 +80,7 @@ def sen_sim(sen):
         # avgofthreemodels = (sim1 + (1 / sim2))/2
         # answervalue = sentimentvalue*avgofthreemodels
         # ansss = str(answervalue)
-    return response
+    return ansss
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5001)
