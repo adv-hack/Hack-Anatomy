@@ -6,14 +6,16 @@ class App extends Component {
     return (
     <div className="App">
       <header className="container">
-         <div className="row">
+      {/* <div className="row">
            <div className="col-md-12" style={{textAlign:'center',fontSize:'25px',fontWeight:'bold'}}>Education Assessments and Forecasts</div>
-       </div>
-       <div className="row">
-         <hr/>
-       </div>
+       </div> */}
+       <h1>Education Assessments and Forecasts</h1>
+           <img src="http://erikdkennedy.com/r-r-r-random/divider-triangle.png" class="divider" />
+       
        <CreateQuestions />
        </header>
+       
+       
     </div>
     );
   }

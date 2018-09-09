@@ -70,12 +70,12 @@ class APIService extends Component {
     return arr.map((innerArray, i) => {
       if (innerArray.questiontype === "chkbox") {
         return (
-          <div className="row">
+          <div className="row" style={{borderLeft:"solid",borderColor:"#ff6126",borderWidth:"15px"}}>
             <div
-              className="col-md-10"
+              className="col-md-12"
               style={{
                 fontSize: "20px",
-                fontWeight: "bold",
+                //fontWeight: "bold",
                 backgroundColor: "lightgray"
               }}
             >
@@ -94,12 +94,12 @@ class APIService extends Component {
         );
       } else if (innerArray.questiontype === "radio") {
           return (
-            <div className="row">
+            <div className="row"style={{borderLeft:"solid",borderColor:"#ff6126",borderWidth:"15px"}} >
               <div
-                className="col-md-10"
+                className="col-md-12"
                 style={{
                   fontSize: "20px",
-                  fontWeight: "bold",
+                  //fontWeight: "bold",
                   backgroundColor: "lightgray"
                 }}
               >
@@ -118,12 +118,12 @@ class APIService extends Component {
           );
       } else {
         return (
-          <div className="row">
+          <div className="row" style={{borderLeft:"solid",borderColor:"#ff6126",borderWidth:"15px"}}>
             <div
-              className="col-md-10"
+              className="col-md-12"
               style={{
                 fontSize: "20px",
-                fontWeight: "bold",
+                //fontWeight: "bold",
                 backgroundColor: "lightgray"
               }}
             >

@@ -97,7 +97,7 @@ class CreateQuestions extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    //value={this.state.learnerID}
+                    value="John S Doe"
                     onChange={this.handleLearnerIDChange}
                     placeholder="Learner Name"
                   />

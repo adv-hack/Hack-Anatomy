@@ -103,9 +103,9 @@ class Dashboard extends Component {
     }else{
     return (
       <div className="row">
-         <div className="row">
-         <h1>Learner Dashboard</h1>
-        </div>
+         
+         <h2>Learner Dashboard</h2>
+        
         <div className="row">
         <div class="col-md-6">
           <div style={{ textAlign: "center" }}>
