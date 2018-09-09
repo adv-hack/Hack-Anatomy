@@ -51,6 +51,7 @@ def implModel(content):
 	y_pred=regr.predict(df2)
 	return str(y_pred[0])
 
+@app.route('/sen_sim/<sen>',methods = ['POST', 'GET'])
 def sen_sim(sen):
     data = request.get_json(force=True)
     modelAns = data['modelAns']
