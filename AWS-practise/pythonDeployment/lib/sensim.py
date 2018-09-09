@@ -30,6 +30,7 @@ import spacy
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 import json
+import language_check
 
 def getRecommendation(model, EasyQuestions, MediumQue, HardQuestions, AvgPerEasyQue, AvgPerMedQue, AvgPerHardQue):
     easyCount = 0
@@ -69,6 +70,16 @@ def getRecommendedMaterial(model, EasyQuestions, MediumQue, HardQuestions, AvgPe
         refStr += s + "#"
     return refStr
 
+
+def grammarCheck(actAns):
+    tool = language_check.LanguageTool('en-US')
+    text = actAns
+    matches = tool.check(text)
+    #print(matches)
+    ans = 'asdasd'
+    for m in matches:
+        ans += str(m) + '<br>'
+    return ans
 
 def getColoredText(modans, actans):
     act_ans = removestopword(actans)
