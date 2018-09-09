@@ -62,7 +62,7 @@ class OverallProgressChart extends Component{
               data={data}
               xLabel= "Total Test"
               yLabel="Total Marks"
-              onPointHover={(obj) => 'Test:' + obj.x + '<br />Marks:' + obj.y}
+              onPointHover={(obj) => 'Test:' + (obj.x + 1) + '<br />Marks:' + obj.y}
             />
           </div>
         );

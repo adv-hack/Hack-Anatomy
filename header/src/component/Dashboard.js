@@ -21,17 +21,14 @@ class Dashboard extends Component {
         hardResult: [],
         learnerResponseRecomm:{}
       };
+      this.learnerID = props.learnerID
   }
   componentWillMount() {
+    debugger;
     var  learnerResponse1 = [];
     var learnerResponseRecomm1 = {};
-     // var url =
-     // "https://21wgg447m7.execute-api.ap-southeast-1.amazonaws.com/dev/student/123123"
-     var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/student/989898"
-     
-     var finalcallurl =
-     "http://54.255.204.22:5001/predict/as"
-       //  + this.data.learnerID;
+     var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/student/"+ this.learnerID;
+     var finalcallurl = "http://54.255.204.22:5001/predict/as"
      fetch(url)
        .then(res => res.json())
        .then(

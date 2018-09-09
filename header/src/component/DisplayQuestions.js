@@ -8,6 +8,7 @@ import OverallProgressChart from "./OverallProgressChart";
 import EasyDifficultyProgressChart from "./EasyDifficultyProgressChart";
 import MediumDifficultyProgressChart from "./MediumDifficultyProgressChart";
 import Dashboard from "./Dashboard";
+import convertToHTML from "./convertToHTML";
 //import ReactSpeedometer from "react-d3-speedometer";
 
 class DisplayQuestions extends Component {
@@ -119,8 +120,9 @@ class DisplayQuestions extends Component {
   render() {
     if (this.state.redirectToNewPage === true) {
       return (
-         <Dashboard />
-      );
+         <Dashboard learnerID={this.data.learnerID} />
+        //<convertToHTML/>
+        )
     }
     else if(this.state.isSubmit)
       return (
