@@ -77,6 +77,7 @@ class PostQuestions extends Component {
     } else {
     return (
         this.state.items.map(innerArray => {
+          let totM = Number(innerArray.totMarks).toFixed(2)
           if (innerArray.questiontype === "chkbox") {
             return (
               <div>
@@ -96,7 +97,7 @@ class PostQuestions extends Component {
                   value={innerArray.options}
                   questionid={innerArray.question}
                   selectedAnswer={innerArray.answer}
-                  totalMarks={innerArray.totMarks}
+                  totalMarks={totM}
                 />
                 </div>
                 <div>
@@ -106,7 +107,7 @@ class PostQuestions extends Component {
                 </div>
                 <div>
                   <label>
-                        Mark: <span style={{color: "blue"}}>{innerArray.totMarks}</span>
+                        Mark: <span style={{color: "blue"}}>{totM}</span>
                   </label>
                 </div>
               </div>
@@ -131,7 +132,7 @@ class PostQuestions extends Component {
                     value={innerArray.options}
                     questionid={innerArray.question}
                     selectedAnswer={innerArray.answer}
-                    totalMarks={innerArray.totMarks}
+                    totalMarks={totM}
                   />
                   </div>
                   <div>
@@ -141,7 +142,8 @@ class PostQuestions extends Component {
                 </div>
                 <div>
                   <label>
-                        Mark: <span style={{color: "blue"}}>{innerArray.totMarks}</span>
+                  
+                        Mark: <span style={{color: "blue"}}>{totM}</span>
                   </label>
                 </div>
 
@@ -166,7 +168,7 @@ class PostQuestions extends Component {
                   value={innerArray.options}
                   questionid={innerArray.question }
                   selectedAnswer={innerArray.answer}
-                  totalMarks={innerArray.totMarks}
+                  totalMarks={totM}
                 />
                 </div>
                 <div>
@@ -176,7 +178,7 @@ class PostQuestions extends Component {
                 </div>
                 <div>
                   <label>
-                        Mark: <span style={{color: "blue"}}>{innerArray.totMarks}</span>
+                        Mark: <span style={{color: "blue"}}>{totM}</span>
                   </label>
                 </div>
               </div>

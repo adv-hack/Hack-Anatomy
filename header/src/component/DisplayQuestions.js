@@ -70,8 +70,9 @@ class DisplayQuestions extends Component {
   }
 
   getFinalResult = (val,arrlen) =>{
+    debugger;
     this.setState({
-      finalResult: val + '/' + this.state.totalQuestions
+      finalResult: Number(val).toFixed(2) + '/' + Number(this.state.totalQuestions).toFixed(2)
     });
   }
 
@@ -117,6 +118,7 @@ class DisplayQuestions extends Component {
         )
     }
     else if(this.state.isSubmit)
+      
       return (
       <form onSubmit={this.handleSubmit}>
       <h3 style={{color:"blue"}}>Final Result: {this.state.finalResult}</h3>

@@ -39,9 +39,9 @@ class Dashboard extends Component {
              //AvgPerEasyQue: result[0].Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / result[0].totNo,
              AvgPerEasyQue: result.Emarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length), // result[0].totNo),
              MediumQue: result.mediumNo,
-             AvgPerMedQue: result.Mmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
+             AvgPerMedQue: result.Mmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Mmarks.length),
              HardQuestions: result.hardNo,
-             AvgPerHardQue: result.Hmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Emarks.length),
+             AvgPerHardQue: result.Hmarks.reduce( function(cnt,o){ return cnt + o; }, 0) / ( 100 * result.Hmarks.length),
              referencelink:result.referencelink
            })
  
