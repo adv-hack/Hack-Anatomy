@@ -121,7 +121,7 @@ class DisplayQuestions extends Component {
       
       return (
       <form onSubmit={this.handleSubmit}>
-      <h3 style={{color:"blue"}}>Final Result: {this.state.finalResult}</h3>
+      <h3 style={{color:"blue"}}>Final Score: {this.state.finalResult}</h3>
       <PostQuestions quearr={this.state.quearr} getFinalResult={this.getFinalResult} data={this.data}/>
       <div className="col-md-12">
       <Button
@@ -130,7 +130,7 @@ class DisplayQuestions extends Component {
         onClick={this.handleReportClick}
         style={{float:"right"}}
       >
-        Report
+        Analytics
       </Button>
     </div>
     </form>
