@@ -65,8 +65,10 @@ def sen_sim(sen):
     if (model_sentiment <= -0.25 and act_sentiment <= -0.25) or (model_sentiment > -0.25 and act_sentiment > -0.25 and model_sentiment <= 0.25 and act_sentiment <= 0.25) or (model_sentiment > 0.25 and act_sentiment > 0.25 and model_sentiment <= 1 and act_sentiment <= 1):
         ansss = str(lib.getAvgSimilarity(modelAns, actAns))
         ansKeyword = str(lib.getColoredText(modelAns, actAns))
-        response = ansss + "#" + ansKeyword
-        # absvalue = abs(model_sentiment-act_sentiment)
+        grmchk = str(lib.grammarCheck(actAns))
+ 	grmchk = grmchk.replace("^","")
+        response = ansss + "#" + ansKeyword + "#" + grachk
+	# absvalue = abs(model_sentiment-act_sentiment)
         # if absvalue == 0:
         #     absvalue = 1
         # sentimentvalue = absvalue
