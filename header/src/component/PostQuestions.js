@@ -76,7 +76,7 @@ class PostQuestions extends Component {
       return <div><Loader /></div>;
     } else {
     return (
-        this.state.items.map(innerArray => {
+        this.state.items.map((innerArray,i) => {
           let totM = Number(innerArray.totMarks).toFixed(2)
           if (innerArray.questiontype === "chkbox") {
             return (
@@ -89,7 +89,7 @@ class PostQuestions extends Component {
                     backgroundColor: "lightgray"
                   }}
                 >
-                  {innerArray.questionDesc}
+                 {i+1}) {innerArray.questionDesc}
                 </div>
                 <div className="col-md-12">
                 <CheckboxQuestionList
@@ -124,7 +124,7 @@ class PostQuestions extends Component {
                       backgroundColor: "lightgray"
                     }}
                   >
-                    {innerArray.questionDesc}
+                    {i+1}) {innerArray.questionDesc}
                   </div>
                   <div className="col-md-12">
                   <RadioButtonQuestionList
@@ -160,7 +160,7 @@ class PostQuestions extends Component {
                     backgroundColor: "lightgray"
                   }}
                 >
-                  {innerArray.questionDesc}
+                  {i+1}) {innerArray.questionDesc}
                 </div>
                 <div className="col-md-12" style={{marginTop:"5px"}}>
                 <TextAreaQuestionList

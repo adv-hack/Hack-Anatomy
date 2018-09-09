@@ -113,7 +113,7 @@ class Dashboard extends Component {
     return (
       <div className="row">
          
-         <h2>Learner Dashboard</h2>
+         <h2>My Dashboard</h2>
         
         <div className="row">
         <div class="col-md-6">

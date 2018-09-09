@@ -69,12 +69,12 @@ class Recommendation extends Component {
   render() {
     return (
       <div className="row">
-        As per the predection based on past result history <br /> we recommend
-        you to reappear in <strong>{this.state.testReco}</strong> test.
+        As per our prediction based on your past results <br /> we recommend
+        you to reappear in <strong>{this.state.testReco}</strong> complexity test.
         <br />
         <br />
-        Here are some references to score better. Please consult your subject
-        teacher about this reference material.
+        You can study some reference links to score better. Feel free to conslut your subject
+        teacher about this reference material links.
         <ul>{this.createUlLi()}</ul>
       </div>
     );

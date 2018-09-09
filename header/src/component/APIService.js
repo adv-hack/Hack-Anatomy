@@ -79,7 +79,7 @@ class APIService extends Component {
                 backgroundColor: "lightgray"
               }}
             >
-              {innerArray.question}
+        {i+1})  {innerArray.question}
             </div>
             <div className="col-md-12">
               <CheckboxQuestionList
@@ -103,7 +103,7 @@ class APIService extends Component {
                   backgroundColor: "lightgray"
                 }}
               >
-                {innerArray.question}
+                {i+1}) {innerArray.question}
               </div>
               <div className="col-md-12">
                 <RadioButtonQuestionList
@@ -127,7 +127,7 @@ class APIService extends Component {
                 backgroundColor: "lightgray"
               }}
             >
-              {innerArray.question}
+              {i+1}) {innerArray.question}
             </div>
             <TextAreaQuestionList
               question={innerArray.question}
