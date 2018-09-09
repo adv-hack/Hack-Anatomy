@@ -51,7 +51,6 @@ def implModel(content):
 	y_pred=regr.predict(df2)
 	return str(y_pred[0])
 
-@app.route('/sen_sim/<sen>',methods = ['POST', 'GET'])
 def sen_sim(sen):
     data = request.get_json(force=True)
     modelAns = data['modelAns']
@@ -66,7 +65,7 @@ def sen_sim(sen):
         ansss = str(lib.getAvgSimilarity(modelAns, actAns))
         ansKeyword = str(lib.getColoredText(modelAns, actAns))
         grmchk = str(lib.grammarCheck(actAns))
- 	grmchk = grmchk.replace("^","")
+        grmchk = grmchk.replace("^","")
         response = ansss + "#" + ansKeyword + "#" + grachk
 	# absvalue = abs(model_sentiment-act_sentiment)
         # if absvalue == 0:
@@ -83,6 +82,7 @@ def sen_sim(sen):
         # answervalue = sentimentvalue*avgofthreemodels
         # ansss = str(answervalue)
     return response
+
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=5001)
