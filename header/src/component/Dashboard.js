@@ -128,7 +128,7 @@ class Dashboard extends Component {
         <div className="row">
         <div class="col-md-6">
         <div>
-            <h3 style={{ textAlign: "center", color: "advanced"  }}>Overall Progress</h3>
+            <h3 style={{ textAlign: "center", color:"advanced"  }}>Overall Progress</h3>
           </div>
         <OverallProgressChart value={JSON.stringify(this.state.overallResult)} />
         </div>

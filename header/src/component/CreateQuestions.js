@@ -10,7 +10,7 @@ class CreateQuestions extends Component {
       testid: "",
       subject: "Science",
       difficulty: "Easy",
-      noOfQuestions: "20",
+      noOfQuestions: "10",
       redirectToNewPage: false,
       backgroundColor: "#007bff",
       isReport: false

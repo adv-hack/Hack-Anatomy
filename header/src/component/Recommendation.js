@@ -49,7 +49,7 @@ class Recommendation extends Component {
     render() {
         return(
         <div className="row">
-            As per the predection based on past result history <br /> we recommend you to reappear in Medium test inorder to achieve score more.
+            As per the predection based on past result history <br /> we recommend you to reappear in Medium test.
             <br/><br/>
             Here are some references to score better. Please consult your subject teacher about this reference material.
             <ul>

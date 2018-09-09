@@ -14,9 +14,6 @@ class App extends Component {
        </div>
        <CreateQuestions />
        </header>
-      <div className="row footer">
-           <div className="col-md-12" style={{fontSize:'15px'}}>© Hack Anatomy - Advanced. All rights reserved.</div>
-       </div>
     </div>
     );
   }
