@@ -23,7 +23,7 @@ class Report extends Component {
           minValue={0}
           maxValue={100}
           needleTransition="easeElastic"
-          currentValueText="Current Value: ${value}"
+          currentValueText="Score: ${value}"
         />
       </div>
     );
