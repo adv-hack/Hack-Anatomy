@@ -6,6 +6,9 @@ import EasyDifficultyProgressChart from "./EasyDifficultyProgressChart";
 import MediumDifficultyProgressChart from "./MediumDifficultyProgressChart";
 import HardDifficultyProgressChart from "./HardDifficultyProgressChart";
 import Recommendation from "./Recommendation";
+import ScienceSubjectChart from "./ScienceSubjectChart";
+import SocialScienceSubjectChart from "./SocialScienceSubjectChart";
+import EnglishSubjectChart from "./EnglishSubjectChart";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +22,10 @@ class Dashboard extends Component {
         easyResult: [],
         mediumResult: [],
         hardResult: [],
-        learnerResponseRecomm:{}
+        learnerResponseRecomm:{},
+        scienceSubjectChart:[],
+        socialScienceSubjectChart:[],
+        englishSubjectChart:[]
       };
       this.learnerID = props.learnerID
   }
@@ -80,6 +86,9 @@ class Dashboard extends Component {
                 mediumResult:result.Mmarks,
                 hardResult:result.Hmarks,
                 learnerResponseRecomm:learnerResponseRecomm1,
+                scienceSubjectChart:result.science,
+                socialScienceSubjectChart:result.socialscience,
+                englishSubjectChart:result.english,
                 isLoaded:true
                });
              },
@@ -148,6 +157,30 @@ class Dashboard extends Component {
           <h3>Difficulty - Hard Progress</h3>
           </div>
           <HardDifficultyProgressChart value={JSON.stringify(this.state.hardResult)}  />
+        </div>
+        </div>
+
+        <div className="row">
+        <div class="col-md-6">
+          <div style={{ textAlign: "center" }}>
+          <h3>Subject - Science</h3>
+          </div>
+          <ScienceSubjectChart value={JSON.stringify(this.state.scienceSubjectChart)} />
+        </div>
+        <div class="col-md-6">
+        <div style={{ textAlign: "center" }}>
+          <h3>Subject - Social Science</h3>
+          </div>
+          <SocialScienceSubjectChart value={JSON.stringify(this.state.socialScienceSubjectChart)} />
+        </div>
+        </div>
+
+        <div className="row">
+        <div class="col-md-6">
+          <div style={{ textAlign: "center" }}>
+          <h3>Subject - English</h3>
+          </div>
+          <EnglishSubjectChart value={JSON.stringify(this.state.englishSubjectChart)} />
         </div>
         </div>
         </div>

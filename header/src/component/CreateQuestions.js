@@ -7,7 +7,7 @@ class CreateQuestions extends Component {
     super(props);
     this.state = {
       learName:"John S Doe",
-      learnerID: "989898",
+      learnerID: "4444",
       testid: "",
       subject: "Science",
       difficulty: "Easy",
@@ -17,7 +17,7 @@ class CreateQuestions extends Component {
       isReport: false
     };
 
-    this.handleLearnerIDChange = this.handleLearnerIDChange.bind(this);
+    //this.handleLearnerIDChange = this.handleLearnerIDChange.bind(this);
     this.handleTestIDChange = this.handleTestIDChange.bind(this);
     this.handleSubjectChange = this.handleSubjectChange.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
@@ -26,7 +26,24 @@ class CreateQuestions extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleLearnerIDChange(event) {
+  // handleLearnerIDChange(event) {
+  //   debugger;
+  //   if(event.target.value.toLowerCase().trim() == "john s doe"){
+  //     this.setState({ learnerID: "4444" });
+  //   }
+  //   if(event.target.value.toLowerCase().trim() == "john a doe"){
+  //     this.setState({ learnerID: "3333" });
+  //   }
+  //   if(event.target.value.toLowerCase().trim() == "john d doe"){
+  //     this.setState({ learnerID: "2222" });
+  //   }
+  //   if(event.target.value.toLowerCase().trim() == "john t doe"){
+  //     this.setState({ learnerID: "1111" });
+  //   }
+  //   //this.setState({ learnerID: event.target.value });
+  // }
+  handleLearnerNameChange(event) {
+    this.setState({ learName: event.target.value });
     if(event.target.value.toLowerCase().trim() == "john s doe"){
       this.setState({ learnerID: "4444" });
     }
@@ -39,10 +56,6 @@ class CreateQuestions extends Component {
     if(event.target.value.toLowerCase().trim() == "john t doe"){
       this.setState({ learnerID: "1111" });
     }
-    //this.setState({ learnerID: event.target.value });
-  }
-  handleLearnerNameChange(event) {
-    this.setState({ learName: event.target.value });
   }
   handleTestIDChange(event) {
     this.setState({ testid: event.target.value });
