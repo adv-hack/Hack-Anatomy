@@ -76,7 +76,7 @@ def grammarCheck(actAns):
     text = actAns
     matches = tool.check(text)
     #print(matches)
-    ans = 'asdasd'
+    ans = ''
     for m in matches:
         ans += str(m) + '<br>'
     return ans
