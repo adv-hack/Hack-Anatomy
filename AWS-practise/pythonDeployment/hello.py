@@ -67,7 +67,7 @@ def sen_sim(sen):
         ansKeyword = str(lib.getColoredText(modelAns, actAns))
         grmchk = str(lib.grammarCheck(actAns))
         grmchk = grmchk.replace("^","")
-        response = ansss + "#" + ansKeyword + "#" + grachk
+        response = ansss + "#" + ansKeyword + "#" + grmchk
 	# absvalue = abs(model_sentiment-act_sentiment)
         # if absvalue == 0:
         #     absvalue = 1
