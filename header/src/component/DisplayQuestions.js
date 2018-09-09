@@ -8,7 +8,6 @@ import OverallProgressChart from "./OverallProgressChart";
 import EasyDifficultyProgressChart from "./EasyDifficultyProgressChart";
 import MediumDifficultyProgressChart from "./MediumDifficultyProgressChart";
 import Dashboard from "./Dashboard";
-import convertToHTML from "./convertToHTML";
 //import ReactSpeedometer from "react-d3-speedometer";
 
 class DisplayQuestions extends Component {
@@ -25,21 +24,16 @@ class DisplayQuestions extends Component {
     };
 
     this.data=props.data;
-   
-    
     this.onRadioUpdate = this.onRadioUpdate.bind(this);
     this.onCheckBoxUpdate = this.onCheckBoxUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReportClick = this.handleReportClick.bind(this);
     this.getQuestionsLength = this.getQuestionsLength.bind(this);
-   
   }
 
   handleSubmit(event) {
-    
     this.setState({isSubmit: true});
     event.preventDefault();
-  
 }
   onRadioUpdate = (val, questionid) => {
     this.state.quearr.map((statevalue, idx) => {
@@ -49,7 +43,6 @@ class DisplayQuestions extends Component {
     });
     var arr = [];
     arr.push(val);
-    
     this.state.quearr.push({ answer: arr, questionid: questionid });
   };
 
@@ -121,7 +114,6 @@ class DisplayQuestions extends Component {
     if (this.state.redirectToNewPage === true) {
       return (
          <Dashboard learnerID={this.data.learnerID} />
-        //<convertToHTML/>
         )
     }
     else if(this.state.isSubmit)
