@@ -59,7 +59,7 @@ def sen_sim(sen):
     modelword2vec = lib.word2vec
     ansss = "0"
     ansKeyword = ""
-    response = ""
+    response = "0"
     model_sentiment = lib.findSentiment(modelAns)
     act_sentiment = lib.findSentiment(actAns)
     if (model_sentiment <= -0.25 and act_sentiment <= -0.25) or (model_sentiment > -0.25 and act_sentiment > -0.25 and model_sentiment <= 0.25 and act_sentiment <= 0.25) or (model_sentiment > 0.25 and act_sentiment > 0.25 and model_sentiment <= 1 and act_sentiment <= 1):
