@@ -25,7 +25,19 @@ class CreateQuestions extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleLearnerIDChange(event) {
-    this.setState({ learnerID: event.target.value });
+    if(event.target.value.toLowerCase().trim() == "john s doe"){
+      this.setState({ learnerID: "4444" });
+    }
+    if(event.target.value.toLowerCase().trim() == "john a doe"){
+      this.setState({ learnerID: "3333" });
+    }
+    if(event.target.value.toLowerCase().trim() == "john d doe"){
+      this.setState({ learnerID: "2222" });
+    }
+    if(event.target.value.toLowerCase().trim() == "john t doe"){
+      this.setState({ learnerID: "1111" });
+    }
+    //this.setState({ learnerID: event.target.value });
   }
   handleTestIDChange(event) {
     this.setState({ testid: event.target.value });
@@ -86,10 +98,9 @@ class CreateQuestions extends Component {
                     type="text"
                     className="form-control"
                     //value={this.state.learnerID}
-                    //onChange={this.handleLearnerIDChange}
+                    onChange={this.handleLearnerIDChange}
                     placeholder="Learner Name"
                   />
-                 
                 </div>
               </div>
             </div>
