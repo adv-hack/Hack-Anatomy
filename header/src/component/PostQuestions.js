@@ -80,12 +80,12 @@ class PostQuestions extends Component {
           let totM = Number(innerArray.totMarks).toFixed(2)
           if (innerArray.questiontype === "chkbox") {
             return (
-              <div>
+              <div style={{borderLeft:"solid",borderColor:"#ff6126",borderWidth:"15px"}}>
                 <div
-                  className="col-md-12 row"
+                  className="col-md-12"
                   style={{
                     fontSize: "20px",
-                    fontWeight: "bold",
+                    //fontWeight: "bold",
                     backgroundColor: "lightgray"
                   }}
                 >
@@ -101,12 +101,12 @@ class PostQuestions extends Component {
                 />
                 </div>
                 <div>
-                  <label>
+                  <label style={{marginLeft:"16px"}}>
                         Correct Answer: <span style={{color: "green"}}>{innerArray.rightAns.join(",")}</span>
                   </label>
                 </div>
                 <div>
-                  <label>
+                  <label style={{marginLeft:"16px"}}>
                         Mark: <span style={{color: "blue"}}>{totM}</span>
                   </label>
                 </div>
@@ -115,12 +115,12 @@ class PostQuestions extends Component {
           } else if (innerArray.questiontype === "radio") {
             
               return (
-                <div>
+                <div style={{borderLeft:"solid",borderColor:"#ff6126",borderWidth:"15px"}}>
                   <div
-                    className="col-md-12 row"
+                    className="col-md-12"
                     style={{
                       fontSize: "20px",
-                      fontWeight: "bold",
+                      //fontWeight: "bold",
                       backgroundColor: "lightgray"
                     }}
                   >
@@ -136,12 +136,12 @@ class PostQuestions extends Component {
                   />
                   </div>
                   <div>
-                  <label>
+                  <label style={{marginLeft:"16px"}}>
                       Correct Answer: <span style={{color: "green"}}>{innerArray.rightAns.join(",")}</span>
                   </label>
                 </div>
                 <div>
-                  <label>
+                  <label style={{marginLeft:"16px"}}>
                   
                         Mark: <span style={{color: "blue"}}>{totM}</span>
                   </label>
@@ -151,12 +151,12 @@ class PostQuestions extends Component {
               );
           } else {
             return (
-              <div>
+              <div style={{borderLeft:"solid",borderColor:"#ff6126",borderWidth:"15px"}}>
                 <div
-                  className="col-md-12 row"
+                  className="col-md-12"
                   style={{
                     fontSize: "20px",
-                    fontWeight: "bold",
+                    //fontWeight: "bold",
                     backgroundColor: "lightgray"
                   }}
                 >
@@ -172,12 +172,12 @@ class PostQuestions extends Component {
                 />
                 </div>
                 <div>
-                  <label>
+                  <label style={{marginLeft:"16px"}}>
                       Correct Answer: <span style={{color: "green"}}>{innerArray.rightAns.join(",")}</span>
                   </label>
                 </div>
                 <div>
-                  <label>
+                  <label style={{marginLeft:"16px"}}>
                         Mark: <span style={{color: "blue"}}>{totM}</span>
                   </label>
                 </div>

@@ -18,9 +18,17 @@ class TextAreaQuestionList extends Component {
         this.props.onTextAreaUpdate(target.value,this.questionid);
       } 
     
-    convertToHTML(txt) {
+    convertToHTML(txt,isGrammer) {
         if(txt.indexOf('#') > 0)
-            txt = txt.split('#')[0];
+        {
+            if(!isGrammer)
+                txt = txt.split('#')[0];
+            else
+                if(txt.split('#').length > 1)
+                    txt = txt.split('#')[1];    
+                else
+                    txt = "No mistakes found!"  ;  
+        }
             
         return  txt.split("&lt;").join("<").split("&gt;").join(">")
     }
@@ -38,11 +46,13 @@ class TextAreaQuestionList extends Component {
         else{
             return (
                 <div className="row">
-                <div className="col-lg-10" style={{padding:"0"}}>
-                {/* <Input type="textarea" name="text" onLoad={this.changeFontColor(this)} onChange={this.handleInputChange} disabled value={this.state.selectedAnswer} /> */}
-                <strong>Your Answer:</strong><span dangerouslySetInnerHTML={{ __html: this.convertToHTML(this.state.selectedAnswer) }}></span>
+                <div className="col-lg-10" style={{paddingBottom:"5px"}}>
+                     <strong>Your Answer:</strong><span dangerouslySetInnerHTML={{ __html: this.convertToHTML(this.state.selectedAnswer,false) }}></span>
                 </div>
-              </div>
+                <div className="col-lg-10" style={{paddingBottom:"5px"}}>
+                     <strong>Grammatical Mistakes:</strong><span dangerouslySetInnerHTML={{ __html: this.convertToHTML(this.state.selectedAnswer,true) }}></span>
+                </div>
+                </div>
               );
         }
     }

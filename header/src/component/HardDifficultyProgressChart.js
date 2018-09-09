@@ -59,7 +59,7 @@ class HardDifficultyProgressChart extends Component{
               data={data}
               width={500}
               height={400}
-              xLabel= "Total Test"
+              xLabel= "No. of Test"
               yLabel="Total Marks"
               onPointHover={(obj) => 'Test:' + (obj.x + 1) + '<br />Marks:' + obj.y}
             />

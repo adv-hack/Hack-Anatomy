@@ -58,7 +58,7 @@ class MediumDifficultyProgressChart extends Component{
               width={500}
               height={400}
               data={data}
-              xLabel= "Total Test"
+              xLabel= "No. of Test"
               yLabel="Total Marks"
               onPointHover={(obj) => 'Test:' + ( obj.x + 1) + '<br />Marks:' + obj.y}
             />
