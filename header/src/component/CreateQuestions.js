@@ -6,6 +6,7 @@ class CreateQuestions extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      learName:"John S Doe",
       learnerID: "989898",
       testid: "",
       subject: "Science",
@@ -21,6 +22,7 @@ class CreateQuestions extends Component {
     this.handleSubjectChange = this.handleSubjectChange.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
     this.handleNoOfQuestionsChange = this.handleNoOfQuestionsChange.bind(this);
+    this.handleLearnerNameChange = this.handleLearnerNameChange.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -38,6 +40,9 @@ class CreateQuestions extends Component {
       this.setState({ learnerID: "1111" });
     }
     //this.setState({ learnerID: event.target.value });
+  }
+  handleLearnerNameChange(event) {
+    this.setState({ learName: event.target.value });
   }
   handleTestIDChange(event) {
     this.setState({ testid: event.target.value });
@@ -97,8 +102,8 @@ class CreateQuestions extends Component {
                   <input
                     type="text"
                     className="form-control"
-                    value="John S Doe"
-                    onChange={this.handleLearnerIDChange}
+                    value={this.state.learName}
+                    onChange={this.handleLearnerNameChange}
                     placeholder="Learner Name"
                   />
                 </div>
