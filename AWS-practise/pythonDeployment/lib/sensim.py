@@ -100,9 +100,9 @@ def getColoredText(modans, actans):
     strFinalAct=''
     for fw in word_tokens:
         if fw in gkeyword:
-            strFinalAct+='&lt;green&gt;' + fw + '&lt;/green&gt; '
+            strFinalAct+='&lt;span style="color:green;"&gt;' + fw + '&lt;/span&gt; '
         elif fw in rkeyword:
-            strFinalAct+='&lt;red&gt;' + fw + '&lt;/red&gt; '    
+            strFinalAct+='&lt;span style="color:red;"&gt;' + fw + '&lt;/span&gt; '    
         else:
             strFinalAct+=fw + ' '
     return strFinalAct 
