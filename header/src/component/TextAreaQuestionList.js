@@ -23,11 +23,12 @@ class TextAreaQuestionList extends Component {
         {
             if(!isGrammer)
                 txt = txt.split('#')[0];
-            else
-                if(txt.split('#').length > 1)
+            else{
+                if(txt.split('#').length > 1 &&  txt.split('#')[1] != "")
                     txt = txt.split('#')[1];    
                 else
                     txt = "No mistakes found!"  ;  
+            }
         }
             
         return  txt.split("&lt;").join("<").split("&gt;").join(">")

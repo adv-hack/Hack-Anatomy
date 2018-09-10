@@ -70,7 +70,6 @@ class DisplayQuestions extends Component {
   }
 
   getFinalResult = (val,arrlen) =>{
-    debugger;
     this.setState({
       finalResult: Number(val).toFixed(2) + '/' + Number(this.state.totalQuestions).toFixed(2)
     });
