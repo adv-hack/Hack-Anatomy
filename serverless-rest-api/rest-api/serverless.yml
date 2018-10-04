@@ -71,11 +71,17 @@ functions: # add 4 functions for CRUD
   getAllQueD:
     handler: handler.getAllQueD # path will be domain.name.com/dev/notes
     events:
-     - http:
-         path: dynamo/questions/{total}/{subject}/{difficulty}/{learnerID}
-         method: get
-         cors: true
-  # truncateQuestion:
+      - http:
+          path: dynamo/questions/{total}/{subject}/{difficulty}/{learnerID}
+          method: get
+          cors: true
+  getQueFromStack:
+    handler: handler.getQueFromStack # path will be domain.name.com/dev/notes
+    events:
+      - http:
+          path: dynamo/questions/stack/{total}/{keywords}
+          method: get
+          cors: true  # truncateQuestion:
   #   handler: handler.truncateQuestion
   #   events:
   #    - http:

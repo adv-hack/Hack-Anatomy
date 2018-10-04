@@ -246,7 +246,7 @@ module.exports.getAllQueD = (event, context, callback) => {
   let fetchNumber = parseInt(event.pathParameters.total);
   let diff = event.pathParameters.difficulty;
   let learnerId = event.pathParameters.learnerID;
-  let subject = 'science class 4' // event.pathParameters.subject;
+  let subject = event.pathParameters.subject;
   console.log(learnerId);
   fetchStudent(learnerId)
     .then((result) => {
@@ -314,29 +314,6 @@ module.exports.getAllQueD = (event, context, callback) => {
     });
 };
 
-module.exports.getQueFromStack = (event, context, callback) => {
-  let fetchNumber = parseInt(event.pathParameters.total);
-  let diff = event.pathParameters.keywords;
-  if(diff.indexOf('#') > 0){
-    diff = diff.replace('#', ';');
-  }
-  var finalcallurl1 = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged="+diff+"&site=stackoverflow";
-    fetch(finalcallurl1, {
-      method: "GET",
-    })
-    .then(res => res.json())
-    .then(ans => {
-      console.log(ans);
-      callback(null, {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true
-        },
-        body: JSON.stringify(ans)
-      })
-    })
-};
 
 module.exports.getAllQue = (event, context, callback) => {
   context.callbackWaitsForEmptyEventLoop = false;
@@ -526,7 +503,7 @@ var getTextAns = function (modelAns, actAns) {
         'Access-Control-Allow-Credentials': true,
       }
     })
-      .then(res => res.text())
+      .then(res => res.json())
       .then(ans => {
         if (ans == null) {
           reject(ans);
@@ -543,23 +520,16 @@ var TextArea = function (ans, i, event, objj, isEnd) {
     {
       // console.log('answer for API : '+objj.rightAns[0]);
       // console.info('answer for API : '+ansd.answer[0]);
+      console.log(objj);
       getTextAns(objj.rightAns[0], objj.answer)
         .then(ansd => {
-          console.log(ansd)
-          //# fetch
-          let similarity = 0;
-          let arrr = ansd.split("#")
-          if(ansd.length > 0)  
-            similarity = parseFloat(arrr[0]);
-              
+          let similarity = ansd;
           // console.log('answer from API : '+ansd);
           // console.info('answer from API : '+ansd);
           totMarks += similarity;
           for (var j = 0; j < obj.length; j++) {
             if (obj[j].id == ans[i].id) {
               obj[j].totMarks = similarity;
-              if(similarity > 0)              
-                obj[j].answer = arrr[1] + "#" + arrr[2]
             } else {
               if (obj[j].totMarks == undefined || obj[j].totMarks == null || obj[j].totMarks == 0)
                 obj[j].totMarks = 0;
@@ -597,6 +567,7 @@ var TextArea = function (ans, i, event, objj, isEnd) {
                 ReturnValues: "ALL_NEW"
               };
               if(isEnd){
+                console.log('student updated....');
                 updateStudentDB(updateStudent)
                 .then(result => {
                   finalAns.Result = obj;
