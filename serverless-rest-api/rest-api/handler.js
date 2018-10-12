@@ -479,7 +479,7 @@ module.exports.getTemp = (event, context, callback) => {
   connectToDatabase().then(() => {
     Student.find({ learnerID: event.pathParameters.learnerid })
       .then(stu => {
-        var req = Request('GET', 'http://54.255.204.22:5001/sen_sim/sen');
+        var req = Request('GET', 'http://54.255.139.214:5001/sen_sim/sen');
         console.log(req.getBody());
 
         callback(null, {
@@ -515,7 +515,7 @@ var getTextAns = function (modelAns, actAns) {
     answers.modelAns = modelAns;
     answers.actAns = actAns;
     console.log('asdasdasdad :      ' + JSON.stringify(answers));
-    var apiURL = "http://54.255.204.22:5001/sen_sim/sen";
+    var apiURL = "http://54.255.139.214:5001/sen_sim/sen";
     fetch2(apiURL, {
       method: "POST",
       body: JSON.stringify(answers),

@@ -34,7 +34,7 @@ class Dashboard extends Component {
     var  learnerResponse1 = [];
     var learnerResponseRecomm1 = {};
      var url = "https://mm9iu0u34d.execute-api.ap-southeast-1.amazonaws.com/dev/student/"+ this.learnerID;
-     var finalcallurl = "http://54.255.204.22:5001/predict/as"
+     var finalcallurl = "http://54.255.139.214:5001/predict/as"
      fetch(url)
        .then(res => res.json())
        .then(

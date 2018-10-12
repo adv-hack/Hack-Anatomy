@@ -14,8 +14,8 @@ class Recommendation extends Component {
   }
   componentWillMount() {
     debugger;
-    var finalcallurl = "http://54.255.204.22:5001/material/as";
-    var finalcallurl1 = "http://54.255.204.22:5001/recommend/as";
+    var finalcallurl = "http://54.255.139.214:5001/material/as";
+    var finalcallurl1 = "http://54.255.139.214:5001/recommend/as";
     fetch(finalcallurl, {
       method: "POST",
       body: JSON.stringify(this.state.learnerResponse),
